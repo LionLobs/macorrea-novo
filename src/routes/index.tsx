@@ -291,7 +291,7 @@ function ProgramCarousel() {
     <div className="relative">
       <div
         ref={scrollRef}
-        className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start overflow-x-auto snap-x snap-mandatory md:overflow-visible md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide pb-2"
+        className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-stretch overflow-x-auto snap-x snap-mandatory md:overflow-visible md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide pb-2"
       >
         {programs.map((p, idx) => {
           const Icon = p.icon;
