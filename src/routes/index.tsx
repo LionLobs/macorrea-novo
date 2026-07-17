@@ -526,7 +526,7 @@ function Index() {
         </div>
 
         {/* Marquee de valores */}
-        <div className="marquee border-y border-border/50 bg-primary/90 py-4 sm:py-5 text-[var(--gold-light)] gold-text-glow font-serif italic text-base sm:text-lg">
+        <div className="marquee border-y border-border/50 bg-primary/90 py-4 sm:py-5 text-white font-serif italic text-base sm:text-lg">
           <div className="marquee-track">
             {[...marqueeItems, ...marqueeItems].map((t, i) => (
               <span key={i} className="flex items-center gap-3">
