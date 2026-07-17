@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, Sparkles, Users, Award, Clock } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, Sparkles, Users, Award, Clock, Menu, X } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { useCountUp, useReveal } from "@/hooks/useReveal";
 import heroImageAsset from "@/assets/marlene-photo.png.asset.json";
@@ -159,7 +159,13 @@ function StatCard({ Icon, value, suffix, label, start, delay }: { Icon: typeof C
 
 function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
@@ -171,11 +177,11 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/40">
-        <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-28 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-3">
-            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-24 w-auto" />
+        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 h-20 sm:h-24 lg:h-28 flex items-center justify-between gap-4">
+          <a href="#top" className="flex items-center gap-3 shrink-0">
+            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-14 sm:h-20 lg:h-24 w-auto" />
           </a>
-          <ul className="hidden md:flex items-center gap-9">
+          <ul className="hidden md:flex items-center gap-6 lg:gap-9">
             {navLinks.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="text-sm text-foreground/80 hover:text-primary transition-colors">
@@ -184,53 +190,100 @@ function Index() {
               </li>
             ))}
           </ul>
+          <button
+            className="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg border border-border/60 text-primary"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Abrir menu"
+          >
+            <Menu size={22} />
+          </button>
         </nav>
+        {/* Mobile drawer */}
+        {mobileOpen && (
+          <div className="md:hidden fixed inset-0 z-[60] bg-background">
+            <div className="flex items-center justify-between px-4 h-20 border-b border-border/40">
+              <img src={logoImage} alt="Marlene Corrêa" className="h-14 w-auto" />
+              <button
+                className="inline-flex items-center justify-center w-11 h-11 rounded-lg border border-border/60 text-primary"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Fechar menu"
+              >
+                <X size={22} />
+              </button>
+            </div>
+            <ul className="flex flex-col px-6 py-8 gap-1">
+              {navLinks.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block py-4 text-lg font-serif text-primary border-b border-border/40"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className="px-6 mt-4">
+              <a
+                href={waLink("Olá Marlene!")}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="btn-primary w-full text-center block"
+              >
+                Fale no WhatsApp
+              </a>
+            </div>
+          </div>
+        )}
       </header>
+
 
       {/* HERO */}
       <section id="top" className="relative overflow-hidden hero-glow">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 lg:pt-20 pb-24 grid lg:grid-cols-2 gap-14 items-center relative z-10">
-          <Reveal variant="left">
-            <p className="eyebrow mb-6">Saúde Mental e Reconstrução Profissional</p>
-            <h1 className="text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.05] mb-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-10 sm:pt-14 lg:pt-20 pb-16 sm:pb-20 lg:pb-24 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center relative z-10">
+          <Reveal variant="left" className="order-2 lg:order-1">
+            <p className="eyebrow mb-4 sm:mb-6">Saúde Mental e Reconstrução Profissional</p>
+            <h1 className="text-[2.15rem] sm:text-5xl lg:text-[4.25rem] leading-[1.08] mb-6 sm:mb-8">
               Saúde Mental e Reconstrução Profissional para Mulheres 40+
             </h1>
-            <p className="eyebrow mb-6">
+            <p className="eyebrow mb-4 sm:mb-6">
               Marlene Corrêa — Psicanalista Clínica e Mentora Estratégica
             </p>
-            <p className="text-lg text-foreground/75 leading-relaxed max-w-xl mb-6">
+            <p className="text-base sm:text-lg text-foreground/75 leading-relaxed max-w-xl mb-6">
               Profissional em saúde mental como psicanalista clínica e mentora estratégica, criadora do
               Programa Exclusivo de Reconstrução 40+, conduzo mulheres que desejam romper padrões,
               ressignificar sua história e reconstruir carreira com propósito, maturidade emocional e direção.
             </p>
-            <div className="max-w-xl mb-10">
+            <div className="max-w-xl mb-8 sm:mb-10">
               <p className="text-foreground/85">Não é apenas sobre mudança profissional.</p>
               <p className="italic text-muted-foreground">
                 É sobre reconstruir identidade e assumir a potência que a maturidade trouxe.
               </p>
             </div>
-            <div className="flex flex-wrap gap-4">
-              <a href={waLink("Olá Marlene! Gostaria de solicitar aplicação para o Programa Exclusivo de Reconstrução 40+.")} className="btn-primary" target="_blank" rel="noreferrer">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <a href={waLink("Olá Marlene! Gostaria de solicitar aplicação para o Programa Exclusivo de Reconstrução 40+.")} className="btn-primary text-center" target="_blank" rel="noreferrer">
                 Solicitar Aplicação
               </a>
-              <a href="#programas" className="btn-outline">Conhecer Mais</a>
+              <a href="#programas" className="btn-outline text-center">Conhecer Mais</a>
             </div>
           </Reveal>
-          <Reveal variant="right" delay={150} className="relative flex justify-center lg:justify-end">
+          <Reveal variant="right" delay={150} className="relative flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="absolute -inset-2 rounded-[1.5rem] bg-accent/10 -rotate-2 float-slow" aria-hidden />
-            <div className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
             <img
               src={heroImage}
               alt="Marlene Corrêa, psicanalista clínica"
               width={1200}
               height={1400}
-              className="relative rounded-[1.25rem] shadow-[var(--shadow-soft)] object-cover w-full max-w-[440px] lg:max-w-[480px] h-auto"
+              className="relative rounded-[1.25rem] shadow-[var(--shadow-soft)] object-cover w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[480px] h-auto"
             />
           </Reveal>
         </div>
 
         {/* Marquee de valores */}
-        <div className="marquee border-y border-border/50 bg-card/50 py-5 text-primary/70 font-serif italic text-lg">
+        <div className="marquee border-y border-border/50 bg-card/50 py-4 sm:py-5 text-primary/70 font-serif italic text-base sm:text-lg">
           <div className="marquee-track">
             {[...marqueeItems, ...marqueeItems].map((t, i) => (
               <span key={i} className="flex items-center gap-3">
@@ -243,12 +296,12 @@ function Index() {
       </section>
 
       {/* SOBRE / EXPERTISE */}
-      <section id="sobre" className="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+      <section id="sobre" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-16 sm:py-20">
         <Reveal className="max-w-3xl">
           <span className="block w-16 h-[2px] bg-accent mb-6" />
           <p className="eyebrow mb-4">Marlene Corrêa — Psicanalista Clínica e Mentora</p>
-          <h2 className="text-4xl md:text-5xl mb-8">Expertise & Experiência</h2>
-          <div className="space-y-5 text-lg text-foreground/80 leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-6 sm:mb-8">Expertise & Experiência</h2>
+          <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
             <p>
               Profissional em saúde mental como psicanalista clínica e mentora estratégica,
               criadora do <strong className="text-primary font-semibold">Programa Exclusivo de Reconstrução 40+</strong>.
@@ -265,22 +318,23 @@ function Index() {
           </div>
         </Reveal>
 
-        <div className="mt-16">
+        <div className="mt-12 sm:mt-16">
           <StatsBlock />
         </div>
       </section>
 
 
       {/* PROGRAMAS */}
-      <section id="programas" className="bg-[var(--color-surface)] py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+      <section id="programas" className="bg-[var(--color-surface)] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <SectionEyebrow>Programas de Transformação</SectionEyebrow>
-            <h2 className="text-4xl md:text-5xl mb-4">Programas de Transformação</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">Programas de Transformação</h2>
             <p className="text-foreground/70">Processos estruturados e seletivos para sua reconstrução profissional e pessoal</p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 items-start">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+
             {programs.map((p, idx) => {
               const Icon = p.icon;
               return (
@@ -338,17 +392,17 @@ function Index() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section id="depoimentos" className="py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+      <section id="depoimentos" className="py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <SectionEyebrow>Depoimentos</SectionEyebrow>
-            <h2 className="text-4xl md:text-5xl mb-3">Histórias de Transformação</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-3">Histórias de Transformação</h2>
             <p className="text-foreground/70">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {testimonials.map((t, i) => (
-              <Reveal as="blockquote" variant={i % 2 === 0 ? "left" : "right"} delay={i * 100} key={t.name} className="card-lift relative p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
-                <span className="absolute top-4 right-6 font-serif text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
+              <Reveal as="blockquote" variant={i % 2 === 0 ? "left" : "right"} delay={i * 100} key={t.name} className="card-lift relative p-6 sm:p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
+                <span className="absolute top-4 right-6 font-serif text-6xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
                 <div className="flex gap-1 mb-5">
                   {Array.from({ length: 5 }).map((_, j) => (
                     <Star key={j} size={16} className="fill-accent text-accent" />
@@ -366,23 +420,23 @@ function Index() {
       </section>
 
       {/* SERVIÇOS CORPORATIVOS */}
-      <section id="servicos" className="bg-[var(--color-surface)] py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
-        <div className="relative order-2 lg:order-1 flex justify-center">
-          <div className="absolute -inset-2 rounded-[1.5rem] bg-primary/10 rotate-2" aria-hidden />
-          <img
-            src={corporateImage}
-            alt="Saúde Mental Corporativa"
-            width={1400}
-            height={1000}
-            loading="lazy"
-            className="relative rounded-[1.25rem] shadow-[var(--shadow-elegant)] object-cover w-full max-w-[520px]"
-          />
-        </div>
+      <section id="servicos" className="bg-[var(--color-surface)] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="relative order-2 lg:order-1 flex justify-center">
+            <div className="absolute -inset-2 rounded-[1.5rem] bg-primary/10 rotate-2" aria-hidden />
+            <img
+              src={corporateImage}
+              alt="Saúde Mental Corporativa"
+              width={1400}
+              height={1000}
+              loading="lazy"
+              className="relative rounded-[1.25rem] shadow-[var(--shadow-elegant)] object-cover w-full max-w-[360px] sm:max-w-[460px] lg:max-w-[520px]"
+            />
+          </div>
           <div className="order-1 lg:order-2">
             <span className="block w-16 h-[2px] bg-accent mb-6" />
             <p className="eyebrow mb-4">Saúde Mental Corporativa</p>
-            <h2 className="text-4xl md:text-5xl mb-6">Programas Corporativos em Saúde Mental & NR-1</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-6">Programas Corporativos em Saúde Mental & NR-1</h2>
             <p className="text-foreground/75 leading-relaxed mb-4">
               Atuação estratégica para empresas com foco em prevenção de riscos psicossociais e implementação
               de programas contínuos de saúde mental em conformidade com o Ministério do Trabalho.
@@ -407,29 +461,30 @@ function Index() {
                 </li>
               ))}
             </ul>
-            <a href={waLink("Olá Marlene! Gostaria de solicitar uma proposta para o programa corporativo.")} className="btn-primary" target="_blank" rel="noreferrer">
+            <a href={waLink("Olá Marlene! Gostaria de solicitar uma proposta para o programa corporativo.")} className="btn-primary inline-block text-center" target="_blank" rel="noreferrer">
               Solicitar Proposta Corporativa
             </a>
           </div>
         </div>
       </section>
 
+
       {/* CONTATO / FORM — light background as in original */}
-      <section id="contato" className="py-24">
-        <div className="mx-auto max-w-3xl px-6 lg:px-10 text-center">
+      <section id="contato" className="py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-10 text-center">
           <SectionEyebrow>Contato</SectionEyebrow>
-          <h2 className="text-4xl md:text-5xl mb-4">Comece Sua Transformação Hoje</h2>
-          <p className="text-foreground/70 mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">Comece Sua Transformação Hoje</h2>
+          <p className="text-foreground/70 mb-10 sm:mb-12">
             Deixe seus dados e receba uma proposta personalizada para sua jornada de reconstrução.
           </p>
 
-          <form onSubmit={submitForm} className="grid gap-5 text-left bg-card p-8 lg:p-10 rounded-2xl border border-border shadow-[var(--shadow-elegant)]">
+          <form onSubmit={submitForm} className="grid gap-5 text-left bg-card p-6 sm:p-8 lg:p-10 rounded-2xl border border-border shadow-[var(--shadow-elegant)]">
             <label className="text-sm">
               <span className="block mb-2 text-foreground/80 font-medium">Nome Completo *</span>
               <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg bg-background border border-input text-foreground focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition" />
             </label>
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid sm:grid-cols-2 gap-5">
               <label className="text-sm">
                 <span className="block mb-2 text-foreground/80 font-medium">Email *</span>
                 <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -437,7 +492,7 @@ function Index() {
               </label>
               <label className="text-sm">
                 <span className="block mb-2 text-foreground/80 font-medium">WhatsApp *</span>
-                <input required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                <input required inputMode="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   className="w-full px-4 py-3 rounded-lg bg-background border border-input text-foreground focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition" />
               </label>
             </div>
@@ -458,11 +513,11 @@ function Index() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="bg-[var(--color-surface)] py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
-          <div className="text-center mb-14">
+      <section id="faq" className="bg-[var(--color-surface)] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-10">
+          <div className="text-center mb-10 sm:mb-14">
             <SectionEyebrow>FAQ</SectionEyebrow>
-            <h2 className="text-4xl md:text-5xl mb-3">Dúvidas Frequentes</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-3">Dúvidas Frequentes</h2>
             <p className="text-foreground/70">Respostas para as perguntas mais comuns sobre os programas e serviços</p>
           </div>
           <div className="space-y-3">
@@ -470,14 +525,14 @@ function Index() {
               <Reveal key={f.q} delay={i * 60} className="border border-border rounded-xl bg-card overflow-hidden card-lift">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between text-left px-6 py-5 hover:bg-muted/50 transition-colors"
+                  className="w-full flex items-center justify-between gap-4 text-left px-5 sm:px-6 py-4 sm:py-5 hover:bg-muted/50 transition-colors"
                 >
-                  <span className="text-primary font-medium pr-6">{f.q}</span>
+                  <span className="text-primary font-medium text-sm sm:text-base">{f.q}</span>
                   <ChevronDown size={20} className={`text-accent flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
                 <div className={`grid transition-all duration-500 ease-out ${openFaq === i ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                   <div className="overflow-hidden">
-                    <div className="px-6 pb-6 text-foreground/75 leading-relaxed">{f.a}</div>
+                    <div className="px-5 sm:px-6 pb-6 text-foreground/75 leading-relaxed text-sm sm:text-base">{f.a}</div>
                   </div>
                 </div>
               </Reveal>
@@ -489,9 +544,9 @@ function Index() {
 
       {/* FOOTER — burgundy */}
       <footer className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid md:grid-cols-3 gap-12">
-          <div>
-            <img src={logoWhite} alt="Marlene Corrêa" className="h-20 w-auto mb-4" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-12 sm:py-16 grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-12">
+          <div className="sm:col-span-2 md:col-span-1">
+            <img src={logoWhite} alt="Marlene Corrêa" className="h-16 sm:h-20 w-auto mb-4" />
             <p className="text-sm text-primary-foreground/70 max-w-xs leading-relaxed mt-4">
               Psicanalista Clínica e Mentora Estratégica. Reconstrução 40+.
             </p>
@@ -501,14 +556,14 @@ function Index() {
             <h4 className="text-xs uppercase tracking-[0.24em] text-accent mb-5 font-semibold">Contato</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href={waLink("Olá Marlene!")} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-primary-foreground/85 hover:text-accent transition-colors">
-                  <Phone size={16} className="text-accent" />
+                <a href={waLink("Olá Marlene!")} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-primary-foreground/85 hover:text-accent transition-colors break-all">
+                  <Phone size={16} className="text-accent shrink-0" />
                   (11) 97335-6733
                 </a>
               </li>
               <li>
-                <a href="mailto:macorrea.psi@gmail.com" className="flex items-center gap-3 text-primary-foreground/85 hover:text-accent transition-colors">
-                  <Mail size={16} className="text-accent" />
+                <a href="mailto:macorrea.psi@gmail.com" className="flex items-center gap-3 text-primary-foreground/85 hover:text-accent transition-colors break-all">
+                  <Mail size={16} className="text-accent shrink-0" />
                   macorrea.psi@gmail.com
                 </a>
               </li>
@@ -518,21 +573,22 @@ function Index() {
           <div>
             <h4 className="text-xs uppercase tracking-[0.24em] text-accent mb-5 font-semibold">Redes Sociais</h4>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-accent hover:border-accent transition-colors" aria-label="Instagram">
+              <a href="#" className="w-11 h-11 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-accent hover:border-accent transition-colors" aria-label="Instagram">
                 <Instagram size={16} />
               </a>
-              <a href={waLink("Olá Marlene!")} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-accent hover:border-accent transition-colors" aria-label="WhatsApp">
+              <a href={waLink("Olá Marlene!")} target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-accent hover:border-accent transition-colors" aria-label="WhatsApp">
                 <Phone size={16} />
               </a>
             </div>
           </div>
         </div>
         <div className="border-t border-primary-foreground/15">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 text-center text-xs text-primary-foreground/60">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-6 text-center text-xs text-primary-foreground/60">
             © {new Date().getFullYear()} Marlene Corrêa. Todos os direitos reservados.
           </div>
         </div>
       </footer>
+
     </div>
   );
 }
