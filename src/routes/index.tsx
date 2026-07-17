@@ -128,9 +128,8 @@ function Index() {
       {/* NAV */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/40">
         <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-          <a href="#top" className="font-serif text-2xl text-primary tracking-tight">
-            <span className="italic">Ma</span> Corrêa
-            <span className="block text-[9px] uppercase tracking-[0.3em] text-accent font-sans mt-0.5">— Psicanalista —</span>
+          <a href="#top" className="flex items-center gap-3">
+            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-12 w-auto" />
           </a>
           <ul className="hidden md:flex items-center gap-9">
             {navLinks.map((l) => (
@@ -420,10 +419,7 @@ function Index() {
       <footer className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid md:grid-cols-3 gap-12">
           <div>
-            <div className="font-serif text-3xl mb-3">
-              <span className="italic">Ma</span> Corrêa
-              <span className="block text-[10px] uppercase tracking-[0.3em] text-accent font-sans mt-1">— Psicanalista —</span>
-            </div>
+            <img src={logoWhite} alt="Marlene Corrêa" className="h-16 w-auto mb-4" />
             <p className="text-sm text-primary-foreground/70 max-w-xs leading-relaxed mt-4">
               Psicanalista Clínica e Mentora Estratégica. Reconstrução 40+.
             </p>
