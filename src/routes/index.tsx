@@ -307,6 +307,7 @@ function ProgramCarousel() {
                   : "bg-card border-border/80 hover:border-accent/60 shadow-sm"
               }`}
             >
+              {p.featured && <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-accent via-[var(--gold-light)] to-accent rounded-t-xl sm:rounded-t-2xl" />}
               <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 ${p.featured ? "bg-primary-foreground/10 text-accent gold-glow" : "bg-accent/15 text-accent gold-glow-soft"}`}>
                 <Icon size={20} strokeWidth={1.8} />
               </div>
