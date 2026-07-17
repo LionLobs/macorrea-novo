@@ -281,12 +281,15 @@ function Index() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 items-start">
-            {programs.map((p) => {
+            {programs.map((p, idx) => {
               const Icon = p.icon;
               return (
-                <article
+                <Reveal
                   key={p.title}
-                  className={`relative flex flex-col p-8 lg:p-9 rounded-2xl border transition-all ${
+                  as="article"
+                  variant="up"
+                  delay={idx * 140}
+                  className={`card-lift relative flex flex-col p-8 lg:p-9 rounded-2xl border ${
                     p.featured
                       ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-elegant)]"
                       : "bg-card border-border hover:border-accent/50"
@@ -310,7 +313,7 @@ function Index() {
                   <ul className="space-y-2.5 mb-6">
                     {p.bullets.map((b) => (
                       <li key={b} className="flex gap-3 text-sm items-start">
-                        <span className={`mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${p.featured ? "bg-accent" : "bg-accent"}`} />
+                        <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 bg-accent" />
                         <span className={p.featured ? "text-primary-foreground/90" : "text-foreground/80"}>{b}</span>
                       </li>
                     ))}
@@ -326,10 +329,11 @@ function Index() {
                   >
                     {p.cta}
                   </a>
-                </article>
+                </Reveal>
               );
             })}
           </div>
+
         </div>
       </section>
 
