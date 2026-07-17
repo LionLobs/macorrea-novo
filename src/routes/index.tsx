@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
-import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Sparkles, Users, Award, Clock, Menu, X } from "lucide-react";
+import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Sparkles, Users, Clock, Menu, X } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { useCountUp, useReveal } from "@/hooks/useReveal";
 const heroImage = "/marlene-photo.webp";
@@ -131,14 +131,13 @@ const marqueeItems = [
 const stats = [
   { icon: Clock, value: 20, suffix: "+", label: "Anos de experiência" },
   { icon: Users, value: 500, suffix: "+", label: "Mulheres atendidas" },
-  { icon: Award, value: 15, suffix: "+", label: "Empresas assessoradas" },
   { icon: Sparkles, value: 98, suffix: "%", label: "Satisfação" },
 ];
 
 function StatsBlock() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 lg:gap-10">
+    <div ref={ref} className="grid grid-cols-3 gap-3 sm:gap-6 lg:gap-10">
       {stats.map((s, i) => {
         const Icon = s.icon;
         return <StatCard key={s.label} Icon={Icon} value={s.value} suffix={s.suffix} label={s.label} start={visible} delay={i * 120} />;
