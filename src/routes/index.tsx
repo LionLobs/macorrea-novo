@@ -130,7 +130,7 @@ const marqueeItems = [
 
 const stats = [
   { icon: Clock, value: 20, suffix: "+", label: "Anos de experiência" },
-  { icon: Users, value: 500, suffix: "+", label: "Mulheres atendidas" },
+  { icon: Users, value: 500, suffix: "+", label: "Mulheres e homens atendidos" },
   { icon: Sparkles, value: 98, suffix: "%", label: "Satisfação" },
 ];
 
