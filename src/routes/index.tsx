@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown } from "lucide-react";
+import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, Sparkles, Users, Award, Clock } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import { useCountUp, useReveal } from "@/hooks/useReveal";
 import heroImageAsset from "@/assets/marlene-photo.png.asset.json";
 import corporateImageAsset from "@/assets/corporativo.png.asset.json";
 import logoAsset from "@/assets/logo-cliente.png.asset.json";
