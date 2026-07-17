@@ -98,12 +98,12 @@ const testimonials = [
 ];
 
 const faqs = [
-  { q: "Qual é a diferença entre o Programa Reconstrução 40+ e a Jornada Essencial?", a: "O Programa Exclusivo de Reconstrução 40+ é um processo profundo de 10 semanas individuais, seletivo e estruturado pelo Método Identidade Estratégica™, voltado à reconstrução completa de identidade, direção e posicionamento profissional. A Jornada Essencial é um processo mais curto, de 5 semanas, indicado para quem busca clareza emocional e direção estratégica inicial, podendo evoluir posteriormente para o programa exclusivo." },
-  { q: "Como funciona a Conversa de Alinhamento?", a: "É um encontro individual, sem custo, para entender o seu momento atual, seus objetivos e avaliar se há alinhamento para ingresso no Programa Exclusivo. Nesta conversa também são apresentados o formato completo e o investimento." },
-  { q: "Posso fazer atendimentos enquanto estou em um programa?", a: "Sim. Os atendimentos individuais terapêuticos podem ser combinados aos programas estruturados como suporte complementar, sempre com abordagem personalizada de acordo com o seu momento." },
-  { q: "Qual é o investimento dos programas?", a: "O investimento da Jornada Essencial é apresentado no primeiro contato. Já o do Programa Exclusivo de Reconstrução 40+ é apresentado exclusivamente na Conversa de Alinhamento, após entendermos o seu contexto e objetivos." },
-  { q: "Como funciona o atendimento corporativo?", a: "Iniciamos com um diagnóstico dos fatores psicossociais da empresa, seguido pela construção de um plano de ação estratégico personalizado, com relatórios técnicos para PGR e auditorias, assessoria para RH e lideranças, e programas contínuos de saúde mental em conformidade com a NR-1." },
-  { q: "Qual é a metodologia que você utiliza?", a: "Combino psicanálise clínica, terapia sistêmica, hipnoterapia, constelação familiar, contoterapia e ferramentas complementares de autoconhecimento. Nos programas de reconstrução, aplico o Método Identidade Estratégica™, uma abordagem autoral que integra profundidade emocional e estratégia profissional." },
+  { q: "Qual é a diferença entre o Programa Reconstrução 40+ e a Jornada Essencial?", a: "O Programa Reconstrução 40+ é um processo profundo de 10 semanas com o Método Identidade Estratégica™, voltado para mulheres que desejam uma transformação completa. A Jornada Essencial é um processo de 5 semanas focado em clareza emocional e direção estratégica, ideal para quem está iniciando sua reconstrução." },
+  { q: "Como funciona a Conversa de Alinhamento?", a: "A Conversa de Alinhamento é uma etapa seletiva onde avaliamos juntas se o programa é adequado para o seu momento. É uma conversa franca sobre suas necessidades, objetivos e expectativas." },
+  { q: "Posso fazer atendimentos enquanto estou em um programa?", a: "Sim, os atendimentos individuais podem complementar o programa, oferecendo suporte adicional durante o processo de transformação." },
+  { q: "Qual é o investimento dos programas?", a: "O investimento é apresentado exclusivamente na Conversa de Alinhamento, pois cada processo é personalizado de acordo com as necessidades individuais." },
+  { q: "Como funciona o atendimento corporativo?", a: "O atendimento corporativo inclui diagnóstico dos fatores psicossociais, plano de ação estratégico, relatórios técnicos e assessoria contínua para RH e lideranças, em conformidade com a NR-1." },
+  { q: "Qual é a metodologia que você utiliza?", a: "Utilizo uma abordagem integrativa que combina Psicanálise Clínica, Terapia Sistêmica, Hipnoterapia e Constelação Familiar, aliada à minha experiência de mais de 20 anos no mercado corporativo." },
 ];
 
 const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
