@@ -110,10 +110,52 @@ const faqs = [
 
 const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
   <div className="flex flex-col items-center mb-4">
-    <span className="block w-16 h-[2px] bg-accent mb-6" />
-    <p className="eyebrow">{children}</p>
+    <span className="ornament text-[0.7rem] uppercase tracking-[0.28em] font-semibold">{children}</span>
   </div>
 );
+
+const marqueeItems = [
+  "Reconstrução 40+",
+  "Identidade Estratégica™",
+  "Psicanálise Clínica",
+  "Mentoria Executiva",
+  "NR-1 · Saúde Mental",
+  "Terapia Sistêmica",
+  "Constelação Familiar",
+  "Propósito & Direção",
+];
+
+const stats = [
+  { icon: Clock, value: 20, suffix: "+", label: "Anos de experiência" },
+  { icon: Users, value: 500, suffix: "+", label: "Mulheres atendidas" },
+  { icon: Award, value: 15, suffix: "+", label: "Empresas assessoradas" },
+  { icon: Sparkles, value: 98, suffix: "%", label: "Satisfação" },
+];
+
+function StatsBlock() {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  return (
+    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10">
+      {stats.map((s, i) => {
+        const Icon = s.icon;
+        return <StatCard key={s.label} Icon={Icon} value={s.value} suffix={s.suffix} label={s.label} start={visible} delay={i * 120} />;
+      })}
+    </div>
+  );
+}
+
+function StatCard({ Icon, value, suffix, label, start, delay }: { Icon: typeof Clock; value: number; suffix: string; label: string; start: boolean; delay: number }) {
+  const n = useCountUp(value, start);
+  return (
+    <div className="text-center reveal-up is-visible card-lift bg-card border border-border/60 rounded-2xl p-6 lg:p-8" style={{ transitionDelay: `${delay}ms` }}>
+      <div className="w-11 h-11 rounded-full bg-accent/15 text-accent mx-auto flex items-center justify-center mb-4">
+        <Icon size={20} strokeWidth={1.8} />
+      </div>
+      <div className="font-serif text-4xl lg:text-5xl text-primary tabular-nums">{n}{suffix}</div>
+      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">{label}</div>
+    </div>
+  );
+}
 
 function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
