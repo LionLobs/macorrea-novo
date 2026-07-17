@@ -291,7 +291,7 @@ function ProgramCarousel() {
     <div className="relative">
       <div
         ref={scrollRef}
-        className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start overflow-x-auto snap-x snap-mandatory md:overflow-visible md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide pb-2"
+        className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-stretch overflow-x-auto snap-x snap-mandatory md:overflow-visible md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide pb-2"
       >
         {programs.map((p, idx) => {
           const Icon = p.icon;
@@ -301,12 +301,13 @@ function ProgramCarousel() {
               as="article"
               variant="up"
               delay={idx * 140}
-              className={`card-lift snap-start shrink-0 w-[82vw] md:w-auto md:min-w-0 relative flex flex-col p-4 sm:p-5 md:p-7 lg:p-9 rounded-xl sm:rounded-2xl border ${
+              className={`card-lift snap-start shrink-0 w-[76vw] md:w-auto md:min-w-0 relative flex flex-col p-4 sm:p-5 md:p-7 lg:p-9 rounded-xl sm:rounded-2xl border ${
                 p.featured
-                  ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-elegant)]"
-                  : "bg-card border-border hover:border-accent/50"
+                  ? "bg-primary text-primary-foreground border-primary/80 shadow-[0_18px_40px_-18px_rgba(128,0,32,0.35)]"
+                  : "bg-card border-border/80 hover:border-accent/60 shadow-sm"
               }`}
             >
+              {p.featured && <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-accent via-[var(--gold-light)] to-accent rounded-t-xl sm:rounded-t-2xl" />}
               <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 ${p.featured ? "bg-primary-foreground/10 text-accent gold-glow" : "bg-accent/15 text-accent gold-glow-soft"}`}>
                 <Icon size={20} strokeWidth={1.8} />
               </div>

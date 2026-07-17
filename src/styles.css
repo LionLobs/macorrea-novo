@@ -270,7 +270,7 @@
 
 /* ============ Card lift ============ */
 .card-lift { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
-.card-lift:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+.card-lift:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -14px color-mix(in oklab, var(--primary) 20%, transparent); }
 
 /* ============ Underline link ============ */
 .link-underline { position: relative; }
