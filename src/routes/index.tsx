@@ -1,8 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-marlene.jpg";
-import corporateImage from "@/assets/corporate.jpg";
+import heroImageAsset from "@/assets/marlene-photo.png.asset.json";
+import corporateImageAsset from "@/assets/corporativo.png.asset.json";
+import logoAsset from "@/assets/logo-cliente.png.asset.json";
+import logoWhiteAsset from "@/assets/logo-branca.png.asset.json";
+const heroImage = heroImageAsset.url;
+const corporateImage = corporateImageAsset.url;
+const logoImage = logoAsset.url;
+const logoWhite = logoWhiteAsset.url;
 
 export const Route = createFileRoute("/")({
   component: Index,
