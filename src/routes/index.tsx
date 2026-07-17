@@ -542,7 +542,7 @@ function Index() {
       <footer className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-12 sm:py-16 grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-12">
           <div className="sm:col-span-2 md:col-span-1">
-            <img src={logoWhite} alt="Marlene Corrêa" className="h-16 sm:h-20 w-auto mb-4" />
+            <img src={logoWhite} alt="Marlene Corrêa" className="h-12 sm:h-14 w-auto mb-4" />
             <p className="text-sm text-primary-foreground/70 max-w-xs leading-relaxed mt-4">
               Psicanalista Clínica e Mentora Estratégica. Reconstrução 40+.
             </p>
