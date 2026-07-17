@@ -520,7 +520,7 @@ function Index() {
               height={1400}
               fetchPriority="high"
               decoding="async"
-              className="relative rounded-[1.25rem] shadow-[var(--shadow-soft)] object-cover w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[480px] h-auto"
+              className="relative rounded-[1.25rem] shadow-[var(--shadow-soft)] object-cover w-full max-w-[260px] sm:max-w-[360px] lg:max-w-[480px] h-auto"
             />
           </Reveal>
         </div>
