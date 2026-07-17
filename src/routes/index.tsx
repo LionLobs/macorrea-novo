@@ -224,7 +224,7 @@ function TestimonialCarousel() {
         <button
           onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)}
           aria-label="Depoimentos anteriores"
-          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition"
+          className="w-10 h-10 rounded-full border border-primary-foreground/40 flex items-center justify-center text-primary-foreground hover:border-accent hover:text-accent hover:bg-accent/10 transition"
         >
           <ChevronLeft size={20} />
         </button>
@@ -236,7 +236,7 @@ function TestimonialCarousel() {
               onClick={() => setPage(i)}
               aria-label={`Ir para página ${i + 1}`}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === page ? "w-6 bg-accent" : "w-2 bg-accent/30 hover:bg-accent/60"
+                i === page ? "w-6 bg-accent" : "w-2 bg-primary-foreground/30 hover:bg-accent/60"
               }`}
             />
           ))}
@@ -245,7 +245,7 @@ function TestimonialCarousel() {
         <button
           onClick={() => setPage((p) => (p + 1) % totalPages)}
           aria-label="Próximos depoimentos"
-          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition"
+          className="w-10 h-10 rounded-full border border-primary-foreground/40 flex items-center justify-center text-primary-foreground hover:border-accent hover:text-accent hover:bg-accent/10 transition"
         >
           <ChevronRight size={20} />
         </button>
@@ -583,12 +583,12 @@ function Index() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section id="depoimentos" className="py-16 sm:py-20 lg:py-24">
+      <section id="depoimentos" className="bg-primary text-primary-foreground py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
             <SectionEyebrow>Depoimentos</SectionEyebrow>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-3">Histórias de Transformação</h2>
-            <p className="text-foreground/70">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-3 text-primary-foreground">Histórias de Transformação</h2>
+            <p className="text-primary-foreground/75">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
           </div>
           <Reveal variant="up">
             <TestimonialCarousel />
