@@ -177,7 +177,7 @@ function TestimonialCarousel() {
     return () => clearInterval(interval);
   }, [hovered, totalPages]);
 
-  const shift = isMobile ? page * 100 : page * 50;
+  const shift = page * 100;
 
   return (
     <div
