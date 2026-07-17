@@ -200,7 +200,7 @@ function Index() {
         {mobileOpen && (
           <div className="md:hidden fixed inset-0 z-[60] bg-background">
             <div className="flex items-center justify-between px-4 h-24 border-b border-border/40">
-              <img src={logoImage} alt="Marlene Corrêa" className="h-16 w-auto" />
+              <img src={logoImage} alt="Marlene Corrêa" className="h-14 w-auto" />
               <button
                 className="inline-flex items-center justify-center w-11 h-11 rounded-lg border border-border/60 text-primary"
                 onClick={() => setMobileOpen(false)}
