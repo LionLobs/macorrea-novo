@@ -159,7 +159,13 @@ function StatCard({ Icon, value, suffix, label, start, delay }: { Icon: typeof C
 
 function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
@@ -171,11 +177,11 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/40">
-        <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-28 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-3">
-            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-24 w-auto" />
+        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 h-20 sm:h-24 lg:h-28 flex items-center justify-between gap-4">
+          <a href="#top" className="flex items-center gap-3 shrink-0">
+            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-14 sm:h-20 lg:h-24 w-auto" />
           </a>
-          <ul className="hidden md:flex items-center gap-9">
+          <ul className="hidden md:flex items-center gap-6 lg:gap-9">
             {navLinks.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="text-sm text-foreground/80 hover:text-primary transition-colors">
@@ -184,8 +190,55 @@ function Index() {
               </li>
             ))}
           </ul>
+          <button
+            className="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg border border-border/60 text-primary"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Abrir menu"
+          >
+            <Menu size={22} />
+          </button>
         </nav>
+        {/* Mobile drawer */}
+        {mobileOpen && (
+          <div className="md:hidden fixed inset-0 z-[60] bg-background">
+            <div className="flex items-center justify-between px-4 h-20 border-b border-border/40">
+              <img src={logoImage} alt="Marlene Corrêa" className="h-14 w-auto" />
+              <button
+                className="inline-flex items-center justify-center w-11 h-11 rounded-lg border border-border/60 text-primary"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Fechar menu"
+              >
+                <X size={22} />
+              </button>
+            </div>
+            <ul className="flex flex-col px-6 py-8 gap-1">
+              {navLinks.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block py-4 text-lg font-serif text-primary border-b border-border/40"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className="px-6 mt-4">
+              <a
+                href={waLink("Olá Marlene!")}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="btn-primary w-full text-center block"
+              >
+                Fale no WhatsApp
+              </a>
+            </div>
+          </div>
+        )}
       </header>
+
 
       {/* HERO */}
       <section id="top" className="relative overflow-hidden hero-glow">
