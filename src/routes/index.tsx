@@ -176,8 +176,6 @@ function TestimonialCarousel() {
     return () => clearInterval(interval);
   }, [hovered, totalPages]);
 
-  const canPrev = page > 0;
-  const canNext = page < totalPages - 1;
   const shift = isMobile ? page * 100 : page * 50;
 
   return (
@@ -216,10 +214,9 @@ function TestimonialCarousel() {
 
       <div className="flex items-center justify-center gap-3 mt-8">
         <button
-          onClick={() => setPage((p) => Math.max(0, p - 1))}
-          disabled={!canPrev}
+          onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)}
           aria-label="Depoimentos anteriores"
-          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition disabled:opacity-30 disabled:cursor-not-allowed"
+          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition"
         >
           <ChevronLeft size={20} />
         </button>
@@ -238,10 +235,9 @@ function TestimonialCarousel() {
         </div>
 
         <button
-          onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-          disabled={!canNext}
+          onClick={() => setPage((p) => (p + 1) % totalPages)}
           aria-label="Próximos depoimentos"
-          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition disabled:opacity-30 disabled:cursor-not-allowed"
+          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition"
         >
           <ChevronRight size={20} />
         </button>
