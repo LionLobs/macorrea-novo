@@ -485,28 +485,14 @@ function Index() {
       {/* DEPOIMENTOS */}
       <section id="depoimentos" className="py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
             <SectionEyebrow>Depoimentos</SectionEyebrow>
             <h2 className="text-3xl sm:text-4xl md:text-5xl mb-3">Histórias de Transformação</h2>
             <p className="text-foreground/70">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-            {testimonials.map((t, i) => (
-              <Reveal as="blockquote" variant={i % 2 === 0 ? "left" : "right"} delay={i * 100} key={t.name} className="card-lift relative p-6 sm:p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
-                <span className="absolute top-4 right-6 font-serif text-6xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
-                <div className="flex gap-1 mb-5">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} size={16} className="fill-accent text-accent gold-glow-soft" />
-                  ))}
-                </div>
-                <p className="text-foreground/80 leading-relaxed italic mb-6 flex-1">"{t.text}"</p>
-                <footer>
-                  <div className="font-semibold text-primary">{t.name}</div>
-                  <div className="text-[0.7rem] uppercase tracking-[0.2em] text-accent mt-1">{t.role}</div>
-                </footer>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal variant="up">
+            <TestimonialCarousel />
+          </Reveal>
         </div>
       </section>
 
