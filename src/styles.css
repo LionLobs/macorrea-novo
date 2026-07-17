@@ -286,3 +286,13 @@
 }
 .link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
 
+/* ============ Hide scrollbar (mobile carousels) ============ */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+
