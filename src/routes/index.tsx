@@ -346,11 +346,12 @@ function Index() {
             <p className="text-foreground/70">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((t) => (
-              <blockquote key={t.name} className="p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
+            {testimonials.map((t, i) => (
+              <Reveal as="blockquote" variant={i % 2 === 0 ? "left" : "right"} delay={i * 100} key={t.name} className="card-lift relative p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
+                <span className="absolute top-4 right-6 font-serif text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
                 <div className="flex gap-1 mb-5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={16} className="fill-accent text-accent" />
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} size={16} className="fill-accent text-accent" />
                   ))}
                 </div>
                 <p className="text-foreground/80 leading-relaxed italic mb-6 flex-1">"{t.text}"</p>
@@ -358,7 +359,7 @@ function Index() {
                   <div className="font-semibold text-primary">{t.name}</div>
                   <div className="text-[0.7rem] uppercase tracking-[0.2em] text-accent mt-1">{t.role}</div>
                 </footer>
-              </blockquote>
+              </Reveal>
             ))}
           </div>
         </div>
