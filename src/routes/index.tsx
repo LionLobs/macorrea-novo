@@ -573,10 +573,10 @@ function Index() {
           <div>
             <h4 className="text-xs uppercase tracking-[0.24em] text-accent mb-5 font-semibold">Redes Sociais</h4>
             <div className="flex gap-3">
-              <a href="#" className="w-11 h-11 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-accent hover:border-accent transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/macorrea.psicoterapia" target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-accent hover:border-accent transition-colors" aria-label="Instagram">
                 <Instagram size={16} />
               </a>
-              <a href={waLink("Olá Marlene!")} target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-accent hover:border-accent transition-colors" aria-label="WhatsApp">
+              <a href="https://wa.me/5511973356733" target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-accent hover:border-accent transition-colors" aria-label="WhatsApp">
                 <Phone size={16} />
               </a>
             </div>
