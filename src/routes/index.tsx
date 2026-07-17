@@ -93,6 +93,7 @@ const testimonials = [
   { text: "Foi excelente ter feito sessões de terapia com a Marlene, frente a uma mudança de país vêm alguns desafios emocionais como: estar longe da família, lidar e conviver com pessoas de cultura diferentes.", name: "Patrícia Kaltner", role: "Acompanhamento Terapêutico" },
   { text: "A Terapia Sistêmica mudou completamente minha vida. Tanto que escolhi fazer somente as sessões com a Marlene, e optei por não dar continuidade na terapia convencional. Tenho mexido em emoções que estão atreladas à minha criança interior e isso tem me ajudado a me curar.", name: "Ariane Cavalcante", role: "Acompanhamento Terapêutico" },
   { text: "Querida Marlene, como sua mentorada nesse meu processo de transição de carreira pude aprender a me planejar, a colocar foco e determinar as etapas para realmente fazer acontecer meus negócios. Eu realmente amadureci nesse período em que estivemos juntas.", name: "Karina Marquis", role: "Mentoria Transição de Carreira" },
+  { text: "Fazer a terapia com a Marlene contribuiu na transformação da minha vida pessoal e profissional, trabalhando com diversas ferramentas me permitiu a abertura para a vida. Saí de um momento de doença, dor, medos, inseguranças para autoconhecimento, consciência e ao encontro do meu propósito, que me trilharam para a minha transição de carreira. É só gratidão, gratidão e gratidão!", name: "Rosana Mizutori", role: "Terapia e Mentoria em Transição de Carreira" },
 ];
 
 const faqs = [
