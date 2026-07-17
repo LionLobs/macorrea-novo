@@ -206,13 +206,43 @@
   align-items: center;
   gap: 0.75rem;
   color: var(--color-accent);
+  text-shadow: 0 0 18px color-mix(in oklab, var(--accent) 55%, transparent);
 }
 .ornament::before, .ornament::after {
   content: "";
   height: 1px;
   width: 42px;
   background: currentColor;
-  opacity: 0.6;
+  opacity: 0.8;
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* ============ Gold glow utilities ============ */
+@utility gold-glow {
+  filter: drop-shadow(0 0 10px color-mix(in oklab, var(--accent) 55%, transparent));
+}
+@utility gold-glow-soft {
+  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--accent) 40%, transparent));
+}
+@utility gold-text-glow {
+  text-shadow: 0 0 16px color-mix(in oklab, var(--accent) 50%, transparent), 0 0 30px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+@utility gold-shimmer {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 25%, color-mix(in oklab, white 55%, transparent) 45%, transparent 65%);
+    transform: translateX(-100%);
+    animation: shimmer-gold 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+@keyframes shimmer-gold {
+  0% { transform: translateX(-100%); }
+  40%, 100% { transform: translateX(100%); }
 }
 
 /* ============ Card lift ============ */
@@ -229,6 +259,7 @@
   transform: scaleX(0);
   transform-origin: right;
   transition: transform .4s ease;
+  box-shadow: 0 0 8px var(--color-accent);
 }
 .link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
 
