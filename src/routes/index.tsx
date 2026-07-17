@@ -5,12 +5,10 @@ import { Reveal } from "@/components/Reveal";
 import { useCountUp, useReveal } from "@/hooks/useReveal";
 import heroImageAsset from "@/assets/marlene-photo.png.asset.json";
 import corporateImageAsset from "@/assets/corporativo.png.asset.json";
-import logoAsset from "@/assets/logo-cliente.png.asset.json";
-import logoWhiteAsset from "@/assets/logo-branca.png.asset.json";
 const heroImage = heroImageAsset.url;
 const corporateImage = corporateImageAsset.url;
-const logoImage = logoAsset.url;
-const logoWhite = logoWhiteAsset.url;
+const logoImage = "/logo-cliente-cropped.png";
+const logoWhite = "/logo-branca-cropped.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
