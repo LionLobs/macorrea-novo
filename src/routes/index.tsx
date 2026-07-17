@@ -556,7 +556,7 @@ function Index() {
             <h4 className="text-xs uppercase tracking-[0.24em] text-accent mb-5 font-semibold">Contato</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href={waLink("Olá Marlene!")} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-primary-foreground/85 hover:text-accent transition-colors break-all">
+                <a href="https://wa.me/5511973356733" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-primary-foreground/85 hover:text-accent transition-colors break-all">
                   <Phone size={16} className="text-accent shrink-0" />
                   (11) 97335-6733
                 </a>
