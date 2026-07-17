@@ -188,48 +188,63 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 lg:pt-20 pb-24 grid lg:grid-cols-2 gap-14 items-center">
-        <div>
-          <p className="eyebrow mb-6">Saúde Mental e Reconstrução Profissional</p>
-          <h1 className="text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.05] mb-8">
-            Saúde Mental e Reconstrução Profissional para Mulheres 40+
-          </h1>
-          <p className="eyebrow mb-6">
-            Marlene Corrêa — Psicanalista Clínica e Mentora Estratégica
-          </p>
-          <p className="text-lg text-foreground/75 leading-relaxed max-w-xl mb-6">
-            Profissional em saúde mental como psicanalista clínica e mentora estratégica, criadora do
-            Programa Exclusivo de Reconstrução 40+, conduzo mulheres que desejam romper padrões,
-            ressignificar sua história e reconstruir carreira com propósito, maturidade emocional e direção.
-          </p>
-          <div className="max-w-xl mb-10">
-            <p className="text-foreground/85">Não é apenas sobre mudança profissional.</p>
-            <p className="italic text-muted-foreground">
-              É sobre reconstruir identidade e assumir a potência que a maturidade trouxe.
+      <section id="top" className="relative overflow-hidden hero-glow">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 lg:pt-20 pb-24 grid lg:grid-cols-2 gap-14 items-center relative z-10">
+          <Reveal variant="left">
+            <p className="eyebrow mb-6">Saúde Mental e Reconstrução Profissional</p>
+            <h1 className="text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.05] mb-8">
+              Saúde Mental e Reconstrução Profissional para Mulheres 40+
+            </h1>
+            <p className="eyebrow mb-6">
+              Marlene Corrêa — Psicanalista Clínica e Mentora Estratégica
             </p>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            <a href={waLink("Olá Marlene! Gostaria de solicitar aplicação para o Programa Exclusivo de Reconstrução 40+.")} className="btn-primary" target="_blank" rel="noreferrer">
-              Solicitar Aplicação
-            </a>
-            <a href="#programas" className="btn-outline">Conhecer Mais</a>
-          </div>
+            <p className="text-lg text-foreground/75 leading-relaxed max-w-xl mb-6">
+              Profissional em saúde mental como psicanalista clínica e mentora estratégica, criadora do
+              Programa Exclusivo de Reconstrução 40+, conduzo mulheres que desejam romper padrões,
+              ressignificar sua história e reconstruir carreira com propósito, maturidade emocional e direção.
+            </p>
+            <div className="max-w-xl mb-10">
+              <p className="text-foreground/85">Não é apenas sobre mudança profissional.</p>
+              <p className="italic text-muted-foreground">
+                É sobre reconstruir identidade e assumir a potência que a maturidade trouxe.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4">
+              <a href={waLink("Olá Marlene! Gostaria de solicitar aplicação para o Programa Exclusivo de Reconstrução 40+.")} className="btn-primary" target="_blank" rel="noreferrer">
+                Solicitar Aplicação
+              </a>
+              <a href="#programas" className="btn-outline">Conhecer Mais</a>
+            </div>
+          </Reveal>
+          <Reveal variant="right" delay={150} className="relative">
+            <div className="absolute -inset-4 rounded-[2rem] bg-accent/10 -rotate-2 float-slow" aria-hidden />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
+            <img
+              src={heroImage}
+              alt="Marlene Corrêa, psicanalista clínica"
+              width={1200}
+              height={1400}
+              className="relative rounded-[1.75rem] shadow-[var(--shadow-soft)] object-cover w-full h-auto"
+            />
+          </Reveal>
         </div>
-        <div className="relative">
-          <div className="absolute -inset-4 rounded-[2rem] bg-accent/10 -rotate-2" aria-hidden />
-          <img
-            src={heroImage}
-            alt="Marlene Corrêa, psicanalista clínica"
-            width={1200}
-            height={1400}
-            className="relative rounded-[1.75rem] shadow-[var(--shadow-soft)] object-cover w-full h-auto"
-          />
+
+        {/* Marquee de valores */}
+        <div className="marquee border-y border-border/50 bg-card/50 py-5 text-primary/70 font-serif italic text-lg">
+          <div className="marquee-track">
+            {[...marqueeItems, ...marqueeItems].map((t, i) => (
+              <span key={i} className="flex items-center gap-3">
+                <Sparkles size={14} className="text-accent" />
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* SOBRE / EXPERTISE — left aligned, matches original */}
+      {/* SOBRE / EXPERTISE */}
       <section id="sobre" className="mx-auto max-w-7xl px-6 lg:px-10 py-20">
-        <div className="max-w-3xl">
+        <Reveal className="max-w-3xl">
           <span className="block w-16 h-[2px] bg-accent mb-6" />
           <p className="eyebrow mb-4">Marlene Corrêa — Psicanalista Clínica e Mentora</p>
           <h2 className="text-4xl md:text-5xl mb-8">Expertise & Experiência</h2>
@@ -248,8 +263,13 @@ function Index() {
               organizacional à prática clínica.
             </p>
           </div>
+        </Reveal>
+
+        <div className="mt-16">
+          <StatsBlock />
         </div>
       </section>
+
 
       {/* PROGRAMAS */}
       <section id="programas" className="bg-[var(--color-surface)] py-24">
