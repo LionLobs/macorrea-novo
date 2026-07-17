@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown } from "lucide-react";
+import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, Sparkles, Users, Award, Clock } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import { useCountUp, useReveal } from "@/hooks/useReveal";
 import heroImageAsset from "@/assets/marlene-photo.png.asset.json";
 import corporateImageAsset from "@/assets/corporativo.png.asset.json";
 import logoAsset from "@/assets/logo-cliente.png.asset.json";
@@ -108,10 +110,52 @@ const faqs = [
 
 const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
   <div className="flex flex-col items-center mb-4">
-    <span className="block w-16 h-[2px] bg-accent mb-6" />
-    <p className="eyebrow">{children}</p>
+    <span className="ornament text-[0.7rem] uppercase tracking-[0.28em] font-semibold">{children}</span>
   </div>
 );
+
+const marqueeItems = [
+  "Reconstrução 40+",
+  "Identidade Estratégica™",
+  "Psicanálise Clínica",
+  "Mentoria Executiva",
+  "NR-1 · Saúde Mental",
+  "Terapia Sistêmica",
+  "Constelação Familiar",
+  "Propósito & Direção",
+];
+
+const stats = [
+  { icon: Clock, value: 20, suffix: "+", label: "Anos de experiência" },
+  { icon: Users, value: 500, suffix: "+", label: "Mulheres atendidas" },
+  { icon: Award, value: 15, suffix: "+", label: "Empresas assessoradas" },
+  { icon: Sparkles, value: 98, suffix: "%", label: "Satisfação" },
+];
+
+function StatsBlock() {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  return (
+    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10">
+      {stats.map((s, i) => {
+        const Icon = s.icon;
+        return <StatCard key={s.label} Icon={Icon} value={s.value} suffix={s.suffix} label={s.label} start={visible} delay={i * 120} />;
+      })}
+    </div>
+  );
+}
+
+function StatCard({ Icon, value, suffix, label, start, delay }: { Icon: typeof Clock; value: number; suffix: string; label: string; start: boolean; delay: number }) {
+  const n = useCountUp(value, start);
+  return (
+    <div className="text-center reveal-up is-visible card-lift bg-card border border-border/60 rounded-2xl p-6 lg:p-8" style={{ transitionDelay: `${delay}ms` }}>
+      <div className="w-11 h-11 rounded-full bg-accent/15 text-accent mx-auto flex items-center justify-center mb-4">
+        <Icon size={20} strokeWidth={1.8} />
+      </div>
+      <div className="font-serif text-4xl lg:text-5xl text-primary tabular-nums">{n}{suffix}</div>
+      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">{label}</div>
+    </div>
+  );
+}
 
 function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -144,48 +188,63 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 lg:pt-20 pb-24 grid lg:grid-cols-2 gap-14 items-center">
-        <div>
-          <p className="eyebrow mb-6">Saúde Mental e Reconstrução Profissional</p>
-          <h1 className="text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.05] mb-8">
-            Saúde Mental e Reconstrução Profissional para Mulheres 40+
-          </h1>
-          <p className="eyebrow mb-6">
-            Marlene Corrêa — Psicanalista Clínica e Mentora Estratégica
-          </p>
-          <p className="text-lg text-foreground/75 leading-relaxed max-w-xl mb-6">
-            Profissional em saúde mental como psicanalista clínica e mentora estratégica, criadora do
-            Programa Exclusivo de Reconstrução 40+, conduzo mulheres que desejam romper padrões,
-            ressignificar sua história e reconstruir carreira com propósito, maturidade emocional e direção.
-          </p>
-          <div className="max-w-xl mb-10">
-            <p className="text-foreground/85">Não é apenas sobre mudança profissional.</p>
-            <p className="italic text-muted-foreground">
-              É sobre reconstruir identidade e assumir a potência que a maturidade trouxe.
+      <section id="top" className="relative overflow-hidden hero-glow">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 lg:pt-20 pb-24 grid lg:grid-cols-2 gap-14 items-center relative z-10">
+          <Reveal variant="left">
+            <p className="eyebrow mb-6">Saúde Mental e Reconstrução Profissional</p>
+            <h1 className="text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.05] mb-8">
+              Saúde Mental e Reconstrução Profissional para Mulheres 40+
+            </h1>
+            <p className="eyebrow mb-6">
+              Marlene Corrêa — Psicanalista Clínica e Mentora Estratégica
             </p>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            <a href={waLink("Olá Marlene! Gostaria de solicitar aplicação para o Programa Exclusivo de Reconstrução 40+.")} className="btn-primary" target="_blank" rel="noreferrer">
-              Solicitar Aplicação
-            </a>
-            <a href="#programas" className="btn-outline">Conhecer Mais</a>
-          </div>
+            <p className="text-lg text-foreground/75 leading-relaxed max-w-xl mb-6">
+              Profissional em saúde mental como psicanalista clínica e mentora estratégica, criadora do
+              Programa Exclusivo de Reconstrução 40+, conduzo mulheres que desejam romper padrões,
+              ressignificar sua história e reconstruir carreira com propósito, maturidade emocional e direção.
+            </p>
+            <div className="max-w-xl mb-10">
+              <p className="text-foreground/85">Não é apenas sobre mudança profissional.</p>
+              <p className="italic text-muted-foreground">
+                É sobre reconstruir identidade e assumir a potência que a maturidade trouxe.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4">
+              <a href={waLink("Olá Marlene! Gostaria de solicitar aplicação para o Programa Exclusivo de Reconstrução 40+.")} className="btn-primary" target="_blank" rel="noreferrer">
+                Solicitar Aplicação
+              </a>
+              <a href="#programas" className="btn-outline">Conhecer Mais</a>
+            </div>
+          </Reveal>
+          <Reveal variant="right" delay={150} className="relative">
+            <div className="absolute -inset-4 rounded-[2rem] bg-accent/10 -rotate-2 float-slow" aria-hidden />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
+            <img
+              src={heroImage}
+              alt="Marlene Corrêa, psicanalista clínica"
+              width={1200}
+              height={1400}
+              className="relative rounded-[1.75rem] shadow-[var(--shadow-soft)] object-cover w-full h-auto"
+            />
+          </Reveal>
         </div>
-        <div className="relative">
-          <div className="absolute -inset-4 rounded-[2rem] bg-accent/10 -rotate-2" aria-hidden />
-          <img
-            src={heroImage}
-            alt="Marlene Corrêa, psicanalista clínica"
-            width={1200}
-            height={1400}
-            className="relative rounded-[1.75rem] shadow-[var(--shadow-soft)] object-cover w-full h-auto"
-          />
+
+        {/* Marquee de valores */}
+        <div className="marquee border-y border-border/50 bg-card/50 py-5 text-primary/70 font-serif italic text-lg">
+          <div className="marquee-track">
+            {[...marqueeItems, ...marqueeItems].map((t, i) => (
+              <span key={i} className="flex items-center gap-3">
+                <Sparkles size={14} className="text-accent" />
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* SOBRE / EXPERTISE — left aligned, matches original */}
+      {/* SOBRE / EXPERTISE */}
       <section id="sobre" className="mx-auto max-w-7xl px-6 lg:px-10 py-20">
-        <div className="max-w-3xl">
+        <Reveal className="max-w-3xl">
           <span className="block w-16 h-[2px] bg-accent mb-6" />
           <p className="eyebrow mb-4">Marlene Corrêa — Psicanalista Clínica e Mentora</p>
           <h2 className="text-4xl md:text-5xl mb-8">Expertise & Experiência</h2>
@@ -204,8 +263,13 @@ function Index() {
               organizacional à prática clínica.
             </p>
           </div>
+        </Reveal>
+
+        <div className="mt-16">
+          <StatsBlock />
         </div>
       </section>
+
 
       {/* PROGRAMAS */}
       <section id="programas" className="bg-[var(--color-surface)] py-24">
@@ -217,12 +281,15 @@ function Index() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 items-start">
-            {programs.map((p) => {
+            {programs.map((p, idx) => {
               const Icon = p.icon;
               return (
-                <article
+                <Reveal
                   key={p.title}
-                  className={`relative flex flex-col p-8 lg:p-9 rounded-2xl border transition-all ${
+                  as="article"
+                  variant="up"
+                  delay={idx * 140}
+                  className={`card-lift relative flex flex-col p-8 lg:p-9 rounded-2xl border ${
                     p.featured
                       ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-elegant)]"
                       : "bg-card border-border hover:border-accent/50"
@@ -246,7 +313,7 @@ function Index() {
                   <ul className="space-y-2.5 mb-6">
                     {p.bullets.map((b) => (
                       <li key={b} className="flex gap-3 text-sm items-start">
-                        <span className={`mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${p.featured ? "bg-accent" : "bg-accent"}`} />
+                        <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 bg-accent" />
                         <span className={p.featured ? "text-primary-foreground/90" : "text-foreground/80"}>{b}</span>
                       </li>
                     ))}
@@ -262,10 +329,11 @@ function Index() {
                   >
                     {p.cta}
                   </a>
-                </article>
+                </Reveal>
               );
             })}
           </div>
+
         </div>
       </section>
 
@@ -278,11 +346,12 @@ function Index() {
             <p className="text-foreground/70">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((t) => (
-              <blockquote key={t.name} className="p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
+            {testimonials.map((t, i) => (
+              <Reveal as="blockquote" variant={i % 2 === 0 ? "left" : "right"} delay={i * 100} key={t.name} className="card-lift relative p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
+                <span className="absolute top-4 right-6 font-serif text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
                 <div className="flex gap-1 mb-5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={16} className="fill-accent text-accent" />
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} size={16} className="fill-accent text-accent" />
                   ))}
                 </div>
                 <p className="text-foreground/80 leading-relaxed italic mb-6 flex-1">"{t.text}"</p>
@@ -290,7 +359,7 @@ function Index() {
                   <div className="font-semibold text-primary">{t.name}</div>
                   <div className="text-[0.7rem] uppercase tracking-[0.2em] text-accent mt-1">{t.role}</div>
                 </footer>
-              </blockquote>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -398,19 +467,22 @@ function Index() {
           </div>
           <div className="space-y-3">
             {faqs.map((f, i) => (
-              <div key={f.q} className="border border-border rounded-xl bg-card overflow-hidden">
+              <Reveal key={f.q} delay={i * 60} className="border border-border rounded-xl bg-card overflow-hidden card-lift">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between text-left px-6 py-5 hover:bg-muted/50 transition-colors"
                 >
                   <span className="text-primary font-medium pr-6">{f.q}</span>
-                  <ChevronDown size={20} className={`text-accent flex-shrink-0 transition-transform ${openFaq === i ? "rotate-180" : ""}`} />
+                  <ChevronDown size={20} className={`text-accent flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-6 text-foreground/75 leading-relaxed">{f.a}</div>
-                )}
-              </div>
+                <div className={`grid transition-all duration-500 ease-out ${openFaq === i ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-6 text-foreground/75 leading-relaxed">{f.a}</div>
+                  </div>
+                </div>
+              </Reveal>
             ))}
+
           </div>
         </div>
       </section>
