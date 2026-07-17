@@ -1,8 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-marlene.jpg";
-import corporateImage from "@/assets/corporate.jpg";
+import heroImageAsset from "@/assets/marlene-photo.png.asset.json";
+import corporateImageAsset from "@/assets/corporativo.png.asset.json";
+import logoAsset from "@/assets/logo-cliente.png.asset.json";
+import logoWhiteAsset from "@/assets/logo-branca.png.asset.json";
+const heroImage = heroImageAsset.url;
+const corporateImage = corporateImageAsset.url;
+const logoImage = logoAsset.url;
+const logoWhite = logoWhiteAsset.url;
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -92,12 +98,12 @@ const testimonials = [
 ];
 
 const faqs = [
-  { q: "Qual é a diferença entre o Programa Reconstrução 40+ e a Jornada Essencial?", a: "O Programa Exclusivo de Reconstrução 40+ é um processo profundo de 10 semanas individuais, seletivo e estruturado pelo Método Identidade Estratégica™, voltado à reconstrução completa de identidade, direção e posicionamento profissional. A Jornada Essencial é um processo mais curto, de 5 semanas, indicado para quem busca clareza emocional e direção estratégica inicial, podendo evoluir posteriormente para o programa exclusivo." },
-  { q: "Como funciona a Conversa de Alinhamento?", a: "É um encontro individual, sem custo, para entender o seu momento atual, seus objetivos e avaliar se há alinhamento para ingresso no Programa Exclusivo. Nesta conversa também são apresentados o formato completo e o investimento." },
-  { q: "Posso fazer atendimentos enquanto estou em um programa?", a: "Sim. Os atendimentos individuais terapêuticos podem ser combinados aos programas estruturados como suporte complementar, sempre com abordagem personalizada de acordo com o seu momento." },
-  { q: "Qual é o investimento dos programas?", a: "O investimento da Jornada Essencial é apresentado no primeiro contato. Já o do Programa Exclusivo de Reconstrução 40+ é apresentado exclusivamente na Conversa de Alinhamento, após entendermos o seu contexto e objetivos." },
-  { q: "Como funciona o atendimento corporativo?", a: "Iniciamos com um diagnóstico dos fatores psicossociais da empresa, seguido pela construção de um plano de ação estratégico personalizado, com relatórios técnicos para PGR e auditorias, assessoria para RH e lideranças, e programas contínuos de saúde mental em conformidade com a NR-1." },
-  { q: "Qual é a metodologia que você utiliza?", a: "Combino psicanálise clínica, terapia sistêmica, hipnoterapia, constelação familiar, contoterapia e ferramentas complementares de autoconhecimento. Nos programas de reconstrução, aplico o Método Identidade Estratégica™, uma abordagem autoral que integra profundidade emocional e estratégia profissional." },
+  { q: "Qual é a diferença entre o Programa Reconstrução 40+ e a Jornada Essencial?", a: "O Programa Reconstrução 40+ é um processo profundo de 10 semanas com o Método Identidade Estratégica™, voltado para mulheres que desejam uma transformação completa. A Jornada Essencial é um processo de 5 semanas focado em clareza emocional e direção estratégica, ideal para quem está iniciando sua reconstrução." },
+  { q: "Como funciona a Conversa de Alinhamento?", a: "A Conversa de Alinhamento é uma etapa seletiva onde avaliamos juntas se o programa é adequado para o seu momento. É uma conversa franca sobre suas necessidades, objetivos e expectativas." },
+  { q: "Posso fazer atendimentos enquanto estou em um programa?", a: "Sim, os atendimentos individuais podem complementar o programa, oferecendo suporte adicional durante o processo de transformação." },
+  { q: "Qual é o investimento dos programas?", a: "O investimento é apresentado exclusivamente na Conversa de Alinhamento, pois cada processo é personalizado de acordo com as necessidades individuais." },
+  { q: "Como funciona o atendimento corporativo?", a: "O atendimento corporativo inclui diagnóstico dos fatores psicossociais, plano de ação estratégico, relatórios técnicos e assessoria contínua para RH e lideranças, em conformidade com a NR-1." },
+  { q: "Qual é a metodologia que você utiliza?", a: "Utilizo uma abordagem integrativa que combina Psicanálise Clínica, Terapia Sistêmica, Hipnoterapia e Constelação Familiar, aliada à minha experiência de mais de 20 anos no mercado corporativo." },
 ];
 
 const SectionEyebrow = ({ children }: { children: React.ReactNode }) => (
@@ -122,9 +128,8 @@ function Index() {
       {/* NAV */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/40">
         <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-          <a href="#top" className="font-serif text-2xl text-primary tracking-tight">
-            <span className="italic">Ma</span> Corrêa
-            <span className="block text-[9px] uppercase tracking-[0.3em] text-accent font-sans mt-0.5">— Psicanalista —</span>
+          <a href="#top" className="flex items-center gap-3">
+            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-12 w-auto" />
           </a>
           <ul className="hidden md:flex items-center gap-9">
             {navLinks.map((l) => (
@@ -414,10 +419,7 @@ function Index() {
       <footer className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid md:grid-cols-3 gap-12">
           <div>
-            <div className="font-serif text-3xl mb-3">
-              <span className="italic">Ma</span> Corrêa
-              <span className="block text-[10px] uppercase tracking-[0.3em] text-accent font-sans mt-1">— Psicanalista —</span>
-            </div>
+            <img src={logoWhite} alt="Marlene Corrêa" className="h-16 w-auto mb-4" />
             <p className="text-sm text-primary-foreground/70 max-w-xs leading-relaxed mt-4">
               Psicanalista Clínica e Mentora Estratégica. Reconstrução 40+.
             </p>
