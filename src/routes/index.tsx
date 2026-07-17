@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Sparkles, Users, Award, Clock, Menu, X } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { useCountUp, useReveal } from "@/hooks/useReveal";
