@@ -3,12 +3,10 @@ import { useState, useEffect } from "react";
 import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, Sparkles, Users, Award, Clock, Menu, X } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { useCountUp, useReveal } from "@/hooks/useReveal";
-import heroImageAsset from "@/assets/marlene-photo.png.asset.json";
-import corporateImageAsset from "@/assets/corporativo.png.asset.json";
-const heroImage = heroImageAsset.url;
-const corporateImage = corporateImageAsset.url;
-const logoImage = "/logo-cliente-cropped.png";
-const logoWhite = "/logo-branca-cropped.png";
+const heroImage = "/marlene-photo.png";
+const corporateImage = "/corporativo.png";
+const logoImage = "/logo-cliente.png";
+const logoWhite = "/logo-branca.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
