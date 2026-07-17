@@ -171,9 +171,9 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/40">
-        <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-24 flex items-center justify-between">
+        <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-28 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-20 w-auto" />
+            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-24 w-auto" />
           </a>
           <ul className="hidden md:flex items-center gap-9">
             {navLinks.map((l) => (
