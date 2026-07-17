@@ -243,7 +243,7 @@ function Index() {
       {/* HERO */}
       <section id="top" className="relative overflow-hidden hero-glow">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-10 sm:pt-14 lg:pt-20 pb-16 sm:pb-20 lg:pb-24 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center relative z-10">
-          <Reveal variant="left" className="order-2 lg:order-1">
+          <Reveal variant="left">
             <p className="eyebrow mb-4 sm:mb-6">Saúde Mental e Reconstrução Profissional</p>
             <h1 className="text-[2.15rem] sm:text-5xl lg:text-[4.25rem] leading-[1.08] mb-6 sm:mb-8">
               Saúde Mental e Reconstrução Profissional para Mulheres 40+
@@ -269,7 +269,7 @@ function Index() {
               <a href="#programas" className="btn-outline text-center">Conhecer Mais</a>
             </div>
           </Reveal>
-          <Reveal variant="right" delay={150} className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+          <Reveal variant="right" delay={150} className="relative flex justify-center lg:justify-end">
             <div className="absolute -inset-2 rounded-[1.5rem] bg-accent/10 -rotate-2 float-slow" aria-hidden />
             <div className="absolute -bottom-4 -left-4 w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
             <img
