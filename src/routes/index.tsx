@@ -138,7 +138,7 @@ const stats = [
 function StatsBlock() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10">
+    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 lg:gap-10">
       {stats.map((s, i) => {
         const Icon = s.icon;
         return <StatCard key={s.label} Icon={Icon} value={s.value} suffix={s.suffix} label={s.label} start={visible} delay={i * 120} />;
@@ -150,15 +150,16 @@ function StatsBlock() {
 function StatCard({ Icon, value, suffix, label, start, delay }: { Icon: typeof Clock; value: number; suffix: string; label: string; start: boolean; delay: number }) {
   const n = useCountUp(value, start);
   return (
-    <div className="text-center reveal-up is-visible card-lift bg-card border border-border/60 rounded-2xl p-6 lg:p-8" style={{ transitionDelay: `${delay}ms` }}>
-      <div className="w-11 h-11 rounded-full bg-accent/15 text-accent mx-auto flex items-center justify-center mb-4">
-        <Icon size={20} strokeWidth={1.8} />
+    <div className="text-center reveal-up is-visible card-lift bg-card border border-border/60 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8" style={{ transitionDelay: `${delay}ms` }}>
+      <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-accent/15 text-accent mx-auto flex items-center justify-center mb-2 sm:mb-4">
+        <Icon size={18} strokeWidth={1.8} />
       </div>
-      <div className="font-serif text-4xl lg:text-5xl text-primary tabular-nums">{n}{suffix}</div>
-      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">{label}</div>
+      <div className="font-serif text-2xl sm:text-4xl lg:text-5xl text-primary tabular-nums">{n}{suffix}</div>
+      <div className="text-[0.65rem] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.18em] text-muted-foreground mt-1 sm:mt-2">{label}</div>
     </div>
   );
 }
+
 
 function TestimonialCarousel() {
   const [page, setPage] = useState(0);
@@ -201,20 +202,21 @@ function TestimonialCarousel() {
               key={t.name}
               className="min-w-full md:min-w-[50%] p-1 sm:p-2"
             >
-              <blockquote className="card-lift relative h-full p-6 sm:p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
-                <span className="absolute top-4 right-6 font-serif text-6xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
-                <div className="flex gap-1 mb-5">
+              <blockquote className="card-lift relative h-full p-5 sm:p-8 lg:p-10 bg-card rounded-xl sm:rounded-2xl border border-border/60 flex flex-col">
+                <span className="absolute top-3 right-5 sm:top-4 sm:right-6 font-serif text-5xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
+                <div className="flex gap-1 mb-4 sm:mb-5">
                   {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} size={16} className="fill-accent text-accent gold-glow-soft" />
+                    <Star key={j} size={14} className="fill-accent text-accent gold-glow-soft" />
                   ))}
                 </div>
-                <p className="text-foreground/80 leading-relaxed italic mb-6 flex-1">"{t.text}"</p>
+                <p className="text-sm sm:text-base text-foreground/80 leading-relaxed italic mb-5 sm:mb-6 flex-1">"{t.text}"</p>
                 <footer>
-                  <div className="font-semibold text-primary">{t.name}</div>
-                  <div className="text-[0.7rem] uppercase tracking-[0.2em] text-accent mt-1">{t.role}</div>
+                  <div className="text-sm sm:text-base font-semibold text-primary">{t.name}</div>
+                  <div className="text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-accent mt-1">{t.role}</div>
                 </footer>
               </blockquote>
             </div>
+
           ))}
         </div>
       </div>
@@ -439,47 +441,48 @@ function Index() {
                   as="article"
                   variant="up"
                   delay={idx * 140}
-                  className={`card-lift relative flex flex-col p-8 lg:p-9 rounded-2xl border ${
+                  className={`card-lift relative flex flex-col p-5 sm:p-7 lg:p-9 rounded-xl sm:rounded-2xl border ${
                     p.featured
                       ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-elegant)]"
                       : "bg-card border-border hover:border-accent/50"
                   }`}
                 >
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 ${p.featured ? "bg-primary-foreground/10 text-accent gold-glow" : "bg-accent/15 text-accent gold-glow-soft"}`}>
-                    <Icon size={22} strokeWidth={1.8} />
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 ${p.featured ? "bg-primary-foreground/10 text-accent gold-glow" : "bg-accent/15 text-accent gold-glow-soft"}`}>
+                    <Icon size={20} strokeWidth={1.8} />
                   </div>
-                  <h3 className={`text-2xl mb-1 leading-snug ${p.featured ? "text-primary-foreground" : ""}`}>
+                  <h3 className={`text-lg sm:text-xl lg:text-2xl mb-1 leading-snug ${p.featured ? "text-primary-foreground" : ""}`}>
                     {p.title}
                   </h3>
-                  <p className={`text-sm mb-5 ${p.featured ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                  <p className={`text-xs sm:text-sm mb-4 sm:mb-5 ${p.featured ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
                     {p.subtitle}
                   </p>
-                  <span className={`self-start text-[0.68rem] uppercase tracking-[0.18em] font-semibold px-3 py-1.5 rounded-md mb-5 ${p.featured ? "bg-accent text-accent-foreground" : "bg-accent/15 text-accent"}`}>
+                  <span className={`self-start text-[0.62rem] sm:text-[0.68rem] uppercase tracking-[0.16em] sm:tracking-[0.18em] font-semibold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md mb-4 sm:mb-5 ${p.featured ? "bg-accent text-accent-foreground" : "bg-accent/15 text-accent"}`}>
                     {p.tag}
                   </span>
-                  <p className={`mb-6 leading-relaxed text-[0.95rem] ${p.featured ? "text-primary-foreground/85" : "text-foreground/75"}`}>
+                  <p className={`mb-5 sm:mb-6 leading-relaxed text-sm sm:text-[0.95rem] ${p.featured ? "text-primary-foreground/85" : "text-foreground/75"}`}>
                     {p.description}
                   </p>
-                  <ul className="space-y-2.5 mb-6">
+                  <ul className="space-y-2 sm:space-y-2.5 mb-5 sm:mb-6">
                     {p.bullets.map((b) => (
-                      <li key={b} className="flex gap-3 text-sm items-start">
+                      <li key={b} className="flex gap-3 text-xs sm:text-sm items-start">
                         <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 bg-accent" />
                         <span className={p.featured ? "text-primary-foreground/90" : "text-foreground/80"}>{b}</span>
                       </li>
                     ))}
                   </ul>
-                  <p className={`text-xs italic mb-8 leading-relaxed ${p.featured ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
+                  <p className={`text-[0.7rem] sm:text-xs italic mb-6 sm:mb-8 leading-relaxed ${p.featured ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
                     {p.footnote}
                   </p>
                   <a
                     href={p.ctaLink}
                     target="_blank"
                     rel="noreferrer"
-                    className={`mt-auto ${p.featured ? "btn-primary" : "btn-outline"}`}
+                    className={`mt-auto text-sm sm:text-base ${p.featured ? "btn-primary" : "btn-outline"}`}
                   >
                     {p.cta}
                   </a>
                 </Reveal>
+
               );
             })}
           </div>
