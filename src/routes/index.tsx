@@ -269,7 +269,7 @@ function Index() {
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/40">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 h-20 sm:h-24 lg:h-28 flex items-center justify-between gap-4">
           <a href="#top" className="flex items-center gap-3 shrink-0 -mt-1">
-            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-12 sm:h-16 lg:h-20 w-auto" />
+            <img src={logoImage} alt="Marlene Corrêa Logo" width={480} height={140} fetchPriority="high" decoding="async" className="h-12 sm:h-16 lg:h-20 w-auto" />
           </a>
           <ul className="hidden md:flex items-center gap-6 lg:gap-9">
             {navLinks.map((l) => (
@@ -292,7 +292,7 @@ function Index() {
         {mobileOpen && (
           <div className="md:hidden fixed inset-0 z-[60] bg-background">
             <div className="flex items-center justify-between px-4 h-24 border-b border-border/40">
-              <img src={logoImage} alt="Marlene Corrêa" className="h-12 w-auto" />
+              <img src={logoImage} alt="Marlene Corrêa" width={480} height={140} decoding="async" className="h-12 w-auto" />
               <button
                 className="inline-flex items-center justify-center w-11 h-11 rounded-lg border border-border/60 text-primary"
                 onClick={() => setMobileOpen(false)}
@@ -365,6 +365,8 @@ function Index() {
               alt="Marlene Corrêa, psicanalista clínica"
               width={1200}
               height={1400}
+              fetchPriority="high"
+              decoding="async"
               className="relative rounded-[1.25rem] shadow-[var(--shadow-soft)] object-cover w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[480px] h-auto"
             />
           </Reveal>
@@ -504,6 +506,7 @@ function Index() {
               width={1400}
               height={1000}
               loading="lazy"
+              decoding="async"
               className="relative rounded-[1.25rem] shadow-[var(--shadow-elegant)] object-cover w-full max-w-[360px] sm:max-w-[460px] lg:max-w-[520px]"
             />
           </div>
@@ -620,7 +623,7 @@ function Index() {
       <footer className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-12 sm:py-16 grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-12">
           <div className="sm:col-span-2 md:col-span-1">
-            <img src={logoWhite} alt="Marlene Corrêa" className="h-12 sm:h-14 w-auto mb-4" />
+            <img src={logoWhite} alt="Marlene Corrêa" width={480} height={140} loading="lazy" decoding="async" className="h-12 sm:h-14 w-auto mb-4" />
             <p className="text-sm text-primary-foreground/70 max-w-xs leading-relaxed mt-4">
               Psicanalista Clínica e Mentora Estratégica. Reconstrução 40+.
             </p>
