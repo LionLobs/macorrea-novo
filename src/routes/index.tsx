@@ -137,7 +137,7 @@ const stats = [
 function StatsBlock() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 lg:gap-10">
+    <div ref={ref} className="grid grid-cols-3 gap-3 sm:gap-6 lg:gap-10">
       {stats.map((s, i) => {
         const Icon = s.icon;
         return <StatCard key={s.label} Icon={Icon} value={s.value} suffix={s.suffix} label={s.label} start={visible} delay={i * 120} />;
