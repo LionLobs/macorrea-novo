@@ -10,6 +10,12 @@ const logoWhite = "/logo-branca-trimmed.webp";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    links: [
+      { rel: "preload", as: "image", href: "/marlene-photo.webp", fetchpriority: "high" },
+      { rel: "preload", as: "image", href: "/logo-cliente-trimmed.webp", fetchpriority: "high" },
+    ],
+  }),
 });
 
 const WHATSAPP_BASE = "https://wa.me/5511973356733";
