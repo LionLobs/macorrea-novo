@@ -467,19 +467,22 @@ function Index() {
           </div>
           <div className="space-y-3">
             {faqs.map((f, i) => (
-              <div key={f.q} className="border border-border rounded-xl bg-card overflow-hidden">
+              <Reveal key={f.q} delay={i * 60} className="border border-border rounded-xl bg-card overflow-hidden card-lift">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between text-left px-6 py-5 hover:bg-muted/50 transition-colors"
                 >
                   <span className="text-primary font-medium pr-6">{f.q}</span>
-                  <ChevronDown size={20} className={`text-accent flex-shrink-0 transition-transform ${openFaq === i ? "rotate-180" : ""}`} />
+                  <ChevronDown size={20} className={`text-accent flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-6 text-foreground/75 leading-relaxed">{f.a}</div>
-                )}
-              </div>
+                <div className={`grid transition-all duration-500 ease-out ${openFaq === i ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-6 text-foreground/75 leading-relaxed">{f.a}</div>
+                  </div>
+                </div>
+              </Reveal>
             ))}
+
           </div>
         </div>
       </section>
