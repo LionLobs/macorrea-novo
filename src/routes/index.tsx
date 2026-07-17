@@ -202,20 +202,21 @@ function TestimonialCarousel() {
               key={t.name}
               className="min-w-full md:min-w-[50%] p-1 sm:p-2"
             >
-              <blockquote className="card-lift relative h-full p-6 sm:p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
-                <span className="absolute top-4 right-6 font-serif text-6xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
-                <div className="flex gap-1 mb-5">
+              <blockquote className="card-lift relative h-full p-5 sm:p-8 lg:p-10 bg-card rounded-xl sm:rounded-2xl border border-border/60 flex flex-col">
+                <span className="absolute top-3 right-5 sm:top-4 sm:right-6 font-serif text-5xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
+                <div className="flex gap-1 mb-4 sm:mb-5">
                   {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} size={16} className="fill-accent text-accent gold-glow-soft" />
+                    <Star key={j} size={14} className="fill-accent text-accent gold-glow-soft" />
                   ))}
                 </div>
-                <p className="text-foreground/80 leading-relaxed italic mb-6 flex-1">"{t.text}"</p>
+                <p className="text-sm sm:text-base text-foreground/80 leading-relaxed italic mb-5 sm:mb-6 flex-1">"{t.text}"</p>
                 <footer>
-                  <div className="font-semibold text-primary">{t.name}</div>
-                  <div className="text-[0.7rem] uppercase tracking-[0.2em] text-accent mt-1">{t.role}</div>
+                  <div className="text-sm sm:text-base font-semibold text-primary">{t.name}</div>
+                  <div className="text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-accent mt-1">{t.role}</div>
                 </footer>
               </blockquote>
             </div>
+
           ))}
         </div>
       </div>
