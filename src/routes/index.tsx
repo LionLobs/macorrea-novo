@@ -584,7 +584,7 @@ function Index() {
         </div>
         <div className="border-t border-primary-foreground/15">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-6 text-center text-xs text-primary-foreground/60">
-            © {new Date().getFullYear()} Marlene Corrêa. Todos os direitos reservados.
+            © 2026 Criado por <a href="https://instagram.com/lionlobs" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors underline underline-offset-2">@lionlobs</a>. Todos os direitos reservados.
           </div>
         </div>
       </footer>
