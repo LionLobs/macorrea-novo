@@ -86,6 +86,7 @@
     font-size: 0.72rem;
     font-weight: 600;
     color: var(--color-accent);
+    text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 50%, transparent);
   }
 }
 
@@ -103,15 +104,15 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: all 0.25s ease;
-  box-shadow: var(--shadow-elegant);
+  box-shadow: 0 12px 30px -12px color-mix(in oklab, var(--accent) 50%, transparent);
   position: relative;
   overflow: hidden;
-  &:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 25px 55px -20px color-mix(in oklab, var(--accent) 55%, transparent); }
+  &:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 20px 50px -14px color-mix(in oklab, var(--accent) 75%, transparent), 0 0 24px color-mix(in oklab, var(--accent) 35%, transparent); }
   &::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, white 45%, transparent) 50%, transparent 70%);
+    background: linear-gradient(120deg, transparent 25%, color-mix(in oklab, white 55%, transparent) 50%, transparent 75%);
     transform: translateX(-120%);
     transition: transform 0.7s ease;
   }
@@ -185,14 +186,19 @@
   content: "";
   position: absolute;
   inset: -20% -10% auto auto;
-  width: 60vw;
-  height: 60vw;
-  max-width: 700px;
-  max-height: 700px;
-  background: radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 60%);
-  filter: blur(20px);
+  width: 65vw;
+  height: 65vw;
+  max-width: 760px;
+  max-height: 760px;
+  background: radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--accent) 34%, transparent), color-mix(in oklab, var(--accent) 10%, transparent) 45%, transparent 70%);
+  filter: blur(28px);
   z-index: 0;
   pointer-events: none;
+  animation: hero-glow-pulse 8s ease-in-out infinite;
+}
+@keyframes hero-glow-pulse {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
 }
 
 /* ============ Ornamental divider ============ */
@@ -201,13 +207,43 @@
   align-items: center;
   gap: 0.75rem;
   color: var(--color-accent);
+  text-shadow: 0 0 18px color-mix(in oklab, var(--accent) 55%, transparent);
 }
 .ornament::before, .ornament::after {
   content: "";
   height: 1px;
   width: 42px;
   background: currentColor;
-  opacity: 0.6;
+  opacity: 0.8;
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* ============ Gold glow utilities ============ */
+@utility gold-glow {
+  filter: drop-shadow(0 0 10px color-mix(in oklab, var(--accent) 55%, transparent));
+}
+@utility gold-glow-soft {
+  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--accent) 40%, transparent));
+}
+@utility gold-text-glow {
+  text-shadow: 0 0 16px color-mix(in oklab, var(--accent) 50%, transparent), 0 0 30px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+@utility gold-shimmer {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 25%, color-mix(in oklab, white 55%, transparent) 45%, transparent 65%);
+    transform: translateX(-100%);
+    animation: shimmer-gold 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+@keyframes shimmer-gold {
+  0% { transform: translateX(-100%); }
+  40%, 100% { transform: translateX(100%); }
 }
 
 /* ============ Card lift ============ */
@@ -224,6 +260,7 @@
   transform: scaleX(0);
   transform-origin: right;
   transition: transform .4s ease;
+  box-shadow: 0 0 8px var(--color-accent);
 }
 .link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
 

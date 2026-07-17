@@ -283,7 +283,7 @@ function Index() {
           <div className="marquee-track">
             {[...marqueeItems, ...marqueeItems].map((t, i) => (
               <span key={i} className="flex items-center gap-3">
-                <Sparkles size={14} className="text-accent" />
+                <Sparkles size={14} className="text-accent gold-glow" />
                 {t}
               </span>
             ))}
@@ -294,7 +294,7 @@ function Index() {
       {/* SOBRE / EXPERTISE */}
       <section id="sobre" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-16 sm:py-20">
         <Reveal className="max-w-3xl">
-          <span className="block w-16 h-[2px] bg-accent mb-6" />
+          <span className="block w-16 h-[2px] bg-accent mb-6 shadow-[0_0_12px_var(--color-accent)]" />
           <p className="eyebrow mb-4">Marlene Corrêa — Psicanalista Clínica e Mentora</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl mb-6 sm:mb-8">Expertise & Experiência</h2>
           <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
@@ -345,7 +345,7 @@ function Index() {
                       : "bg-card border-border hover:border-accent/50"
                   }`}
                 >
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 ${p.featured ? "bg-primary-foreground/10 text-accent" : "bg-accent/15 text-accent"}`}>
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 ${p.featured ? "bg-primary-foreground/10 text-accent gold-glow" : "bg-accent/15 text-accent gold-glow-soft"}`}>
                     <Icon size={22} strokeWidth={1.8} />
                   </div>
                   <h3 className={`text-2xl mb-1 leading-snug ${p.featured ? "text-primary-foreground" : ""}`}>
@@ -401,7 +401,7 @@ function Index() {
                 <span className="absolute top-4 right-6 font-serif text-6xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
                 <div className="flex gap-1 mb-5">
                   {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} size={16} className="fill-accent text-accent" />
+                    <Star key={j} size={16} className="fill-accent text-accent gold-glow-soft" />
                   ))}
                 </div>
                 <p className="text-foreground/80 leading-relaxed italic mb-6 flex-1">"{t.text}"</p>
@@ -430,7 +430,7 @@ function Index() {
             />
           </div>
           <div className="order-1 lg:order-2">
-            <span className="block w-16 h-[2px] bg-accent mb-6" />
+            <span className="block w-16 h-[2px] bg-accent mb-6 shadow-[0_0_12px_var(--color-accent)]" />
             <p className="eyebrow mb-4">Saúde Mental Corporativa</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl mb-6">Programas Corporativos em Saúde Mental & NR-1</h2>
             <p className="text-foreground/75 leading-relaxed mb-4">
@@ -452,7 +452,7 @@ function Index() {
                 "Programas personalizados de saúde mental",
               ].map((i) => (
                 <li key={i} className="flex gap-3 text-foreground/80">
-                  <CheckCircle2 size={18} className="text-accent mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 size={18} className="text-accent mt-0.5 flex-shrink-0 gold-glow-soft" />
                   <span>{i}</span>
                 </li>
               ))}
