@@ -51,6 +51,12 @@
   --accent: oklch(0.68 0.09 70);             /* warm gold */
   --accent-foreground: oklch(0.22 0.03 20);
 
+  /* Modern metallic gold palette for buttons */
+  --gold-light: #E2C275;
+  --gold-mid: #C5A028;
+  --gold-dark: #B8860B;
+  --gold-gradient: linear-gradient(135deg, #E2C275 0%, #C5A028 50%, #B8860B 100%);
+
   --surface: oklch(0.965 0.012 60);
   --surface-foreground: oklch(0.22 0.03 20);
 
