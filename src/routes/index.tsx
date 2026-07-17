@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, Sparkles, Users, Award, Clock, Menu, X } from "lucide-react";
+import { Target, Heart, Brain, Star, Phone, Mail, Instagram, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Sparkles, Users, Award, Clock, Menu, X } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { useCountUp, useReveal } from "@/hooks/useReveal";
 const heroImage = "/marlene-photo.png";
@@ -149,6 +149,103 @@ function StatCard({ Icon, value, suffix, label, start, delay }: { Icon: typeof C
       </div>
       <div className="font-serif text-4xl lg:text-5xl text-primary tabular-nums">{n}{suffix}</div>
       <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">{label}</div>
+    </div>
+  );
+}
+
+function TestimonialCarousel() {
+  const [page, setPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth < 768);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const perPage = isMobile ? 1 : 2;
+  const totalPages = Math.ceil(testimonials.length / perPage);
+
+  useEffect(() => {
+    if (hovered || totalPages <= 1) return;
+    const interval = setInterval(() => {
+      setPage((p) => (p + 1) % totalPages);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [hovered, totalPages]);
+
+  const canPrev = page > 0;
+  const canNext = page < totalPages - 1;
+  const shift = isMobile ? page * 100 : page * 50;
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className="overflow-hidden rounded-2xl">
+        <div
+          className="flex transition-transform duration-700 ease-out"
+          style={{ transform: `translateX(-${shift}%)` }}
+        >
+          {testimonials.map((t) => (
+            <div
+              key={t.name}
+              className="min-w-full md:min-w-[50%] p-1 sm:p-2"
+            >
+              <blockquote className="card-lift relative h-full p-6 sm:p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
+                <span className="absolute top-4 right-6 font-serif text-6xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
+                <div className="flex gap-1 mb-5">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} size={16} className="fill-accent text-accent gold-glow-soft" />
+                  ))}
+                </div>
+                <p className="text-foreground/80 leading-relaxed italic mb-6 flex-1">"{t.text}"</p>
+                <footer>
+                  <div className="font-semibold text-primary">{t.name}</div>
+                  <div className="text-[0.7rem] uppercase tracking-[0.2em] text-accent mt-1">{t.role}</div>
+                </footer>
+              </blockquote>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center gap-3 mt-8">
+        <button
+          onClick={() => setPage((p) => Math.max(0, p - 1))}
+          disabled={!canPrev}
+          aria-label="Depoimentos anteriores"
+          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+        <div className="flex gap-2">
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setPage(i)}
+              aria-label={`Ir para página ${i + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === page ? "w-6 bg-accent" : "w-2 bg-accent/30 hover:bg-accent/60"
+              }`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+          disabled={!canNext}
+          aria-label="Próximos depoimentos"
+          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
     </div>
   );
 }
@@ -388,28 +485,14 @@ function Index() {
       {/* DEPOIMENTOS */}
       <section id="depoimentos" className="py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
             <SectionEyebrow>Depoimentos</SectionEyebrow>
             <h2 className="text-3xl sm:text-4xl md:text-5xl mb-3">Histórias de Transformação</h2>
             <p className="text-foreground/70">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-            {testimonials.map((t, i) => (
-              <Reveal as="blockquote" variant={i % 2 === 0 ? "left" : "right"} delay={i * 100} key={t.name} className="card-lift relative p-6 sm:p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
-                <span className="absolute top-4 right-6 font-serif text-6xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
-                <div className="flex gap-1 mb-5">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} size={16} className="fill-accent text-accent gold-glow-soft" />
-                  ))}
-                </div>
-                <p className="text-foreground/80 leading-relaxed italic mb-6 flex-1">"{t.text}"</p>
-                <footer>
-                  <div className="font-semibold text-primary">{t.name}</div>
-                  <div className="text-[0.7rem] uppercase tracking-[0.2em] text-accent mt-1">{t.role}</div>
-                </footer>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal variant="up">
+            <TestimonialCarousel />
+          </Reveal>
         </div>
       </section>
 
