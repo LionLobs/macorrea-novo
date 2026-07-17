@@ -224,7 +224,7 @@ function TestimonialCarousel() {
         <button
           onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)}
           aria-label="Depoimentos anteriores"
-          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition"
+          className="w-10 h-10 rounded-full border border-primary-foreground/40 flex items-center justify-center text-primary-foreground hover:border-accent hover:text-accent hover:bg-accent/10 transition"
         >
           <ChevronLeft size={20} />
         </button>
@@ -236,7 +236,7 @@ function TestimonialCarousel() {
               onClick={() => setPage(i)}
               aria-label={`Ir para página ${i + 1}`}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === page ? "w-6 bg-accent" : "w-2 bg-accent/30 hover:bg-accent/60"
+                i === page ? "w-6 bg-accent" : "w-2 bg-primary-foreground/30 hover:bg-accent/60"
               }`}
             />
           ))}
@@ -245,7 +245,7 @@ function TestimonialCarousel() {
         <button
           onClick={() => setPage((p) => (p + 1) % totalPages)}
           aria-label="Próximos depoimentos"
-          className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition"
+          className="w-10 h-10 rounded-full border border-primary-foreground/40 flex items-center justify-center text-primary-foreground hover:border-accent hover:text-accent hover:bg-accent/10 transition"
         >
           <ChevronRight size={20} />
         </button>
