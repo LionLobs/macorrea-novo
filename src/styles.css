@@ -268,6 +268,35 @@
   40%, 100% { transform: translateX(100%); }
 }
 
+/* ============ Gold gradient strip (marquee) ============ */
+@utility gold-strip {
+  background: linear-gradient(90deg, var(--gold-dark) 0%, var(--gold-mid) 25%, var(--gold-light) 50%, var(--gold-mid) 75%, var(--gold-dark) 100%);
+  background-size: 200% 100%;
+  color: var(--color-primary);
+  animation: gold-strip-flow 8s linear infinite;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, color-mix(in oklab, white 40%, transparent) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: gold-strip-shimmer 3.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+@keyframes gold-strip-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes gold-strip-shimmer {
+  0% { transform: translateX(-100%); }
+  45%, 100% { transform: translateX(100%); }
+}
+
 /* ============ Card lift ============ */
 .card-lift { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
 .card-lift:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -14px color-mix(in oklab, var(--primary) 20%, transparent); }
