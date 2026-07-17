@@ -274,7 +274,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/40">
+      <header className="sticky top-0 z-50 bg-background/95 border-b border-border/40 shadow-[0_1px_0_rgba(0,0,0,0.02)]">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 h-20 sm:h-24 lg:h-28 flex items-center justify-between gap-4">
           <a href="#top" className="flex items-center gap-3 shrink-0 -mt-1">
             <img src={logoImage} alt="Marlene Corrêa Logo" width={480} height={140} fetchPriority="high" decoding="async" className="h-12 sm:h-16 lg:h-20 w-auto" />
@@ -289,53 +289,74 @@ function Index() {
             ))}
           </ul>
           <button
-            className="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg border border-border/60 text-primary"
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/70 text-primary bg-background"
             onClick={() => setMobileOpen(true)}
             aria-label="Abrir menu"
           >
-            <Menu size={22} />
+            <Menu size={20} />
           </button>
         </nav>
-        {/* Mobile drawer */}
-        {mobileOpen && (
-          <div className="md:hidden fixed inset-0 z-[60] bg-background">
-            <div className="flex items-center justify-between px-4 h-24 border-b border-border/40">
-              <img src={logoImage} alt="Marlene Corrêa" width={480} height={140} decoding="async" className="h-12 w-auto" />
+      </header>
+
+      {/* Mobile drawer — rendered OUTSIDE header to escape backdrop-filter containing block */}
+      {mobileOpen && (
+        <div className="md:hidden fixed inset-0 z-[100]">
+          {/* Backdrop */}
+          <button
+            aria-label="Fechar menu"
+            onClick={() => setMobileOpen(false)}
+            className="absolute inset-0 bg-primary/40 backdrop-blur-sm animate-in fade-in duration-200"
+          />
+          {/* Panel */}
+          <div className="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-background shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
+            <div className="flex items-center justify-between px-5 h-20 border-b border-border/50">
+              <img src={logoImage} alt="Marlene Corrêa" width={480} height={140} decoding="async" className="h-10 w-auto" />
               <button
-                className="inline-flex items-center justify-center w-11 h-11 rounded-lg border border-border/60 text-primary"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/70 text-primary hover:bg-muted/50 transition-colors"
                 onClick={() => setMobileOpen(false)}
                 aria-label="Fechar menu"
               >
-                <X size={22} />
+                <X size={20} />
               </button>
             </div>
-            <ul className="flex flex-col px-6 py-8 gap-1">
+            <ul className="flex-1 overflow-y-auto flex flex-col px-5 py-6 gap-0.5">
               {navLinks.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block py-4 text-lg font-serif text-primary border-b border-border/40"
+                    className="flex items-center justify-between py-3.5 px-3 text-base font-serif text-primary rounded-lg hover:bg-muted/60 hover:text-accent transition-colors border-b border-border/30"
                   >
-                    {l.label}
+                    <span>{l.label}</span>
+                    <ChevronRight size={16} className="text-accent/70" />
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="px-6 mt-4">
+            <div className="px-5 pb-6 pt-4 border-t border-border/50 space-y-3">
               <a
                 href={waLink("Olá Marlene!")}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="btn-primary w-full text-center block"
+                className="btn-primary w-full text-center block text-sm"
               >
                 Fale no WhatsApp
               </a>
+              <div className="flex items-center justify-center gap-4 pt-2 text-xs text-muted-foreground">
+                <a href="https://www.instagram.com/macorrea.psicoterapia" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+                  <Instagram size={14} /> Instagram
+                </a>
+                <span className="text-border">·</span>
+                <a href="mailto:macorrea.psi@gmail.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+                  <Mail size={14} /> Email
+                </a>
+              </div>
             </div>
           </div>
-        )}
-      </header>
+        </div>
+      )}
+
 
 
       {/* HERO */}
