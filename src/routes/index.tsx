@@ -270,8 +270,6 @@ function Index() {
             </div>
           </Reveal>
           <Reveal variant="right" delay={150} className="relative flex justify-center lg:justify-end">
-            <div className="absolute -inset-2 rounded-[1.5rem] bg-accent/10 -rotate-2 float-slow" aria-hidden />
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
             <img
               src={heroImage}
               alt="Marlene Corrêa, psicanalista clínica"
