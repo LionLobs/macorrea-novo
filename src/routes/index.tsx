@@ -138,7 +138,7 @@ const stats = [
 function StatsBlock() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
-    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10">
+    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 lg:gap-10">
       {stats.map((s, i) => {
         const Icon = s.icon;
         return <StatCard key={s.label} Icon={Icon} value={s.value} suffix={s.suffix} label={s.label} start={visible} delay={i * 120} />;
@@ -150,15 +150,16 @@ function StatsBlock() {
 function StatCard({ Icon, value, suffix, label, start, delay }: { Icon: typeof Clock; value: number; suffix: string; label: string; start: boolean; delay: number }) {
   const n = useCountUp(value, start);
   return (
-    <div className="text-center reveal-up is-visible card-lift bg-card border border-border/60 rounded-2xl p-6 lg:p-8" style={{ transitionDelay: `${delay}ms` }}>
-      <div className="w-11 h-11 rounded-full bg-accent/15 text-accent mx-auto flex items-center justify-center mb-4">
-        <Icon size={20} strokeWidth={1.8} />
+    <div className="text-center reveal-up is-visible card-lift bg-card border border-border/60 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8" style={{ transitionDelay: `${delay}ms` }}>
+      <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-accent/15 text-accent mx-auto flex items-center justify-center mb-2 sm:mb-4">
+        <Icon size={18} strokeWidth={1.8} />
       </div>
-      <div className="font-serif text-4xl lg:text-5xl text-primary tabular-nums">{n}{suffix}</div>
-      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">{label}</div>
+      <div className="font-serif text-2xl sm:text-4xl lg:text-5xl text-primary tabular-nums">{n}{suffix}</div>
+      <div className="text-[0.65rem] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.18em] text-muted-foreground mt-1 sm:mt-2">{label}</div>
     </div>
   );
 }
+
 
 function TestimonialCarousel() {
   const [page, setPage] = useState(0);
