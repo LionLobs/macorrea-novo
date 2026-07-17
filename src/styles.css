@@ -104,15 +104,15 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: all 0.25s ease;
-  box-shadow: var(--shadow-elegant);
+  box-shadow: 0 12px 30px -12px color-mix(in oklab, var(--accent) 50%, transparent);
   position: relative;
   overflow: hidden;
-  &:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 25px 55px -20px color-mix(in oklab, var(--accent) 55%, transparent); }
+  &:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 20px 50px -14px color-mix(in oklab, var(--accent) 75%, transparent), 0 0 24px color-mix(in oklab, var(--accent) 35%, transparent); }
   &::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, white 45%, transparent) 50%, transparent 70%);
+    background: linear-gradient(120deg, transparent 25%, color-mix(in oklab, white 55%, transparent) 50%, transparent 75%);
     transform: translateX(-120%);
     transition: transform 0.7s ease;
   }
