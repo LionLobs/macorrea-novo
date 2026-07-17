@@ -176,7 +176,7 @@ function Index() {
       {/* NAV */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/40">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 h-16 sm:h-20 lg:h-24 flex items-center justify-between gap-4">
-          <a href="#top" className="flex items-center gap-3 shrink-0 self-end">
+          <a href="#top" className="flex items-center gap-3 shrink-0 -mt-1">
             <img src={logoImage} alt="Marlene Corrêa Logo" className="h-8 sm:h-10 lg:h-12 w-auto" />
           </a>
           <ul className="hidden md:flex items-center gap-6 lg:gap-9">
