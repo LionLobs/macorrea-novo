@@ -576,61 +576,8 @@ function Index() {
             <p className="text-foreground/70">Processos estruturados e seletivos para sua reconstrução profissional e pessoal</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+          <ProgramCarousel />
 
-            {programs.map((p, idx) => {
-              const Icon = p.icon;
-              return (
-                <Reveal
-                  key={p.title}
-                  as="article"
-                  variant="up"
-                  delay={idx * 140}
-                  className={`card-lift relative flex flex-col p-5 sm:p-7 lg:p-9 rounded-xl sm:rounded-2xl border ${
-                    p.featured
-                      ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-elegant)]"
-                      : "bg-card border-border hover:border-accent/50"
-                  }`}
-                >
-                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 ${p.featured ? "bg-primary-foreground/10 text-accent gold-glow" : "bg-accent/15 text-accent gold-glow-soft"}`}>
-                    <Icon size={20} strokeWidth={1.8} />
-                  </div>
-                  <h3 className={`text-lg sm:text-xl lg:text-2xl mb-1 leading-snug ${p.featured ? "text-primary-foreground" : ""}`}>
-                    {p.title}
-                  </h3>
-                  <p className={`text-xs sm:text-sm mb-4 sm:mb-5 ${p.featured ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-                    {p.subtitle}
-                  </p>
-                  <span className={`self-start text-[0.62rem] sm:text-[0.68rem] uppercase tracking-[0.16em] sm:tracking-[0.18em] font-semibold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md mb-4 sm:mb-5 ${p.featured ? "bg-accent text-accent-foreground" : "bg-accent/15 text-accent"}`}>
-                    {p.tag}
-                  </span>
-                  <p className={`mb-5 sm:mb-6 leading-relaxed text-sm sm:text-[0.95rem] ${p.featured ? "text-primary-foreground/85" : "text-foreground/75"}`}>
-                    {p.description}
-                  </p>
-                  <ul className="space-y-2 sm:space-y-2.5 mb-5 sm:mb-6">
-                    {p.bullets.map((b) => (
-                      <li key={b} className="flex gap-3 text-xs sm:text-sm items-start">
-                        <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 bg-accent" />
-                        <span className={p.featured ? "text-primary-foreground/90" : "text-foreground/80"}>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className={`text-[0.7rem] sm:text-xs italic mb-6 sm:mb-8 leading-relaxed ${p.featured ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
-                    {p.footnote}
-                  </p>
-                  <a
-                    href={p.ctaLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={`mt-auto text-sm sm:text-base ${p.featured ? "btn-primary" : "btn-outline"}`}
-                  >
-                    {p.cta}
-                  </a>
-                </Reveal>
-
-              );
-            })}
-          </div>
 
         </div>
       </section>
