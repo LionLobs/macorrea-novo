@@ -216,15 +216,15 @@ function Index() {
               <a href="#programas" className="btn-outline">Conhecer Mais</a>
             </div>
           </Reveal>
-          <Reveal variant="right" delay={150} className="relative">
-            <div className="absolute -inset-4 rounded-[2rem] bg-accent/10 -rotate-2 float-slow" aria-hidden />
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
+          <Reveal variant="right" delay={150} className="relative flex justify-center lg:justify-end">
+            <div className="absolute -inset-2 rounded-[1.5rem] bg-accent/10 -rotate-2 float-slow" aria-hidden />
+            <div className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
             <img
               src={heroImage}
               alt="Marlene Corrêa, psicanalista clínica"
               width={1200}
               height={1400}
-              className="relative rounded-[1.75rem] shadow-[var(--shadow-soft)] object-cover w-full h-auto"
+              className="relative rounded-[1.25rem] shadow-[var(--shadow-soft)] object-cover w-full max-w-[440px] lg:max-w-[480px] h-auto"
             />
           </Reveal>
         </div>
@@ -368,17 +368,17 @@ function Index() {
       {/* SERVIÇOS CORPORATIVOS */}
       <section id="servicos" className="bg-[var(--color-surface)] py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
-          <div className="relative order-2 lg:order-1">
-            <div className="absolute -inset-4 rounded-[2rem] bg-primary/10 rotate-2" aria-hidden />
-            <img
-              src={corporateImage}
-              alt="Saúde Mental Corporativa"
-              width={1400}
-              height={1000}
-              loading="lazy"
-              className="relative rounded-[1.75rem] shadow-[var(--shadow-elegant)] object-cover w-full"
-            />
-          </div>
+        <div className="relative order-2 lg:order-1 flex justify-center">
+          <div className="absolute -inset-2 rounded-[1.5rem] bg-primary/10 rotate-2" aria-hidden />
+          <img
+            src={corporateImage}
+            alt="Saúde Mental Corporativa"
+            width={1400}
+            height={1000}
+            loading="lazy"
+            className="relative rounded-[1.25rem] shadow-[var(--shadow-elegant)] object-cover w-full max-w-[520px]"
+          />
+        </div>
           <div className="order-1 lg:order-2">
             <span className="block w-16 h-[2px] bg-accent mb-6" />
             <p className="eyebrow mb-4">Saúde Mental Corporativa</p>
