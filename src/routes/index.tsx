@@ -175,9 +175,9 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/40">
-        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 h-20 sm:h-24 lg:h-28 flex items-center justify-between gap-4">
-          <a href="#top" className="flex items-center gap-3 shrink-0">
-            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-14 sm:h-20 lg:h-24 w-auto" />
+        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 h-16 sm:h-20 lg:h-24 flex items-center justify-between gap-4">
+          <a href="#top" className="flex items-center gap-3 shrink-0 self-end">
+            <img src={logoImage} alt="Marlene Corrêa Logo" className="h-10 sm:h-14 lg:h-16 w-auto" />
           </a>
           <ul className="hidden md:flex items-center gap-6 lg:gap-9">
             {navLinks.map((l) => (
@@ -200,7 +200,7 @@ function Index() {
         {mobileOpen && (
           <div className="md:hidden fixed inset-0 z-[60] bg-background">
             <div className="flex items-center justify-between px-4 h-24 border-b border-border/40">
-              <img src={logoImage} alt="Marlene Corrêa" className="h-14 w-auto" />
+              <img src={logoImage} alt="Marlene Corrêa" className="h-10 w-auto" />
               <button
                 className="inline-flex items-center justify-center w-11 h-11 rounded-lg border border-border/60 text-primary"
                 onClick={() => setMobileOpen(false)}
