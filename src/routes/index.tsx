@@ -301,10 +301,10 @@ function ProgramCarousel() {
               as="article"
               variant="up"
               delay={idx * 140}
-              className={`card-lift snap-start shrink-0 w-[82vw] md:w-auto md:min-w-0 relative flex flex-col p-4 sm:p-5 md:p-7 lg:p-9 rounded-xl sm:rounded-2xl border ${
+              className={`card-lift snap-start shrink-0 w-[76vw] md:w-auto md:min-w-0 relative flex flex-col p-4 sm:p-5 md:p-7 lg:p-9 rounded-xl sm:rounded-2xl border ${
                 p.featured
-                  ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-elegant)]"
-                  : "bg-card border-border hover:border-accent/50"
+                  ? "bg-primary text-primary-foreground border-primary/80 shadow-[0_18px_40px_-18px_rgba(128,0,32,0.35)]"
+                  : "bg-card border-border/80 hover:border-accent/60 shadow-sm"
               }`}
             >
               <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 ${p.featured ? "bg-primary-foreground/10 text-accent gold-glow" : "bg-accent/15 text-accent gold-glow-soft"}`}>
