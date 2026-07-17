@@ -392,17 +392,17 @@ function Index() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section id="depoimentos" className="py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+      <section id="depoimentos" className="py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <SectionEyebrow>Depoimentos</SectionEyebrow>
-            <h2 className="text-4xl md:text-5xl mb-3">Histórias de Transformação</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-3">Histórias de Transformação</h2>
             <p className="text-foreground/70">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {testimonials.map((t, i) => (
-              <Reveal as="blockquote" variant={i % 2 === 0 ? "left" : "right"} delay={i * 100} key={t.name} className="card-lift relative p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
-                <span className="absolute top-4 right-6 font-serif text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
+              <Reveal as="blockquote" variant={i % 2 === 0 ? "left" : "right"} delay={i * 100} key={t.name} className="card-lift relative p-6 sm:p-8 lg:p-10 bg-card rounded-2xl border border-border/60 flex flex-col">
+                <span className="absolute top-4 right-6 font-serif text-6xl sm:text-7xl text-accent/25 leading-none select-none" aria-hidden>"</span>
                 <div className="flex gap-1 mb-5">
                   {Array.from({ length: 5 }).map((_, j) => (
                     <Star key={j} size={16} className="fill-accent text-accent" />
@@ -420,23 +420,23 @@ function Index() {
       </section>
 
       {/* SERVIÇOS CORPORATIVOS */}
-      <section id="servicos" className="bg-[var(--color-surface)] py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
-        <div className="relative order-2 lg:order-1 flex justify-center">
-          <div className="absolute -inset-2 rounded-[1.5rem] bg-primary/10 rotate-2" aria-hidden />
-          <img
-            src={corporateImage}
-            alt="Saúde Mental Corporativa"
-            width={1400}
-            height={1000}
-            loading="lazy"
-            className="relative rounded-[1.25rem] shadow-[var(--shadow-elegant)] object-cover w-full max-w-[520px]"
-          />
-        </div>
+      <section id="servicos" className="bg-[var(--color-surface)] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="relative order-2 lg:order-1 flex justify-center">
+            <div className="absolute -inset-2 rounded-[1.5rem] bg-primary/10 rotate-2" aria-hidden />
+            <img
+              src={corporateImage}
+              alt="Saúde Mental Corporativa"
+              width={1400}
+              height={1000}
+              loading="lazy"
+              className="relative rounded-[1.25rem] shadow-[var(--shadow-elegant)] object-cover w-full max-w-[360px] sm:max-w-[460px] lg:max-w-[520px]"
+            />
+          </div>
           <div className="order-1 lg:order-2">
             <span className="block w-16 h-[2px] bg-accent mb-6" />
             <p className="eyebrow mb-4">Saúde Mental Corporativa</p>
-            <h2 className="text-4xl md:text-5xl mb-6">Programas Corporativos em Saúde Mental & NR-1</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-6">Programas Corporativos em Saúde Mental & NR-1</h2>
             <p className="text-foreground/75 leading-relaxed mb-4">
               Atuação estratégica para empresas com foco em prevenção de riscos psicossociais e implementação
               de programas contínuos de saúde mental em conformidade com o Ministério do Trabalho.
@@ -461,12 +461,13 @@ function Index() {
                 </li>
               ))}
             </ul>
-            <a href={waLink("Olá Marlene! Gostaria de solicitar uma proposta para o programa corporativo.")} className="btn-primary" target="_blank" rel="noreferrer">
+            <a href={waLink("Olá Marlene! Gostaria de solicitar uma proposta para o programa corporativo.")} className="btn-primary inline-block text-center" target="_blank" rel="noreferrer">
               Solicitar Proposta Corporativa
             </a>
           </div>
         </div>
       </section>
+
 
       {/* CONTATO / FORM — light background as in original */}
       <section id="contato" className="py-24">
