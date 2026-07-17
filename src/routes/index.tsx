@@ -302,7 +302,7 @@ function ProgramCarousel() {
               as="article"
               variant="up"
               delay={idx * 140}
-              className={`card-lift snap-start shrink-0 w-[82vw] md:w-auto md:min-w-0 relative flex flex-col p-5 sm:p-7 lg:p-9 rounded-xl sm:rounded-2xl border ${
+              className={`card-lift snap-start shrink-0 w-[82vw] md:w-auto md:min-w-0 relative flex flex-col p-4 sm:p-5 md:p-7 lg:p-9 rounded-xl sm:rounded-2xl border ${
                 p.featured
                   ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-elegant)]"
                   : "bg-card border-border hover:border-accent/50"
