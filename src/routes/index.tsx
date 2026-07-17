@@ -255,6 +255,130 @@ function TestimonialCarousel() {
   );
 }
 
+function ProgramCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth < 768);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const handleScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const index = Math.round(el.scrollLeft / (el.scrollWidth / programs.length));
+    setActive(index);
+  };
+
+  const scrollTo = (index: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.firstElementChild ? (el.firstElementChild as HTMLElement).offsetWidth + 16 : el.offsetWidth;
+    el.scrollTo({ left: index * cardWidth, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || !isMobile) return;
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, [isMobile]);
+
+  return (
+    <div className="relative">
+      <div
+        ref={scrollRef}
+        className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start overflow-x-auto snap-x snap-mandatory md:overflow-visible md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide pb-2"
+      >
+        {programs.map((p, idx) => {
+          const Icon = p.icon;
+          return (
+            <Reveal
+              key={p.title}
+              as="article"
+              variant="up"
+              delay={idx * 140}
+              className={`card-lift snap-start shrink-0 w-[82vw] md:w-auto md:min-w-0 relative flex flex-col p-5 sm:p-7 lg:p-9 rounded-xl sm:rounded-2xl border ${
+                p.featured
+                  ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-elegant)]"
+                  : "bg-card border-border hover:border-accent/50"
+              }`}
+            >
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 ${p.featured ? "bg-primary-foreground/10 text-accent gold-glow" : "bg-accent/15 text-accent gold-glow-soft"}`}>
+                <Icon size={20} strokeWidth={1.8} />
+              </div>
+              <h3 className={`text-lg sm:text-xl lg:text-2xl mb-1 leading-snug ${p.featured ? "text-primary-foreground" : ""}`}>
+                {p.title}
+              </h3>
+              <p className={`text-xs sm:text-sm mb-4 sm:mb-5 ${p.featured ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                {p.subtitle}
+              </p>
+              <span className={`self-start text-[0.62rem] sm:text-[0.68rem] uppercase tracking-[0.16em] sm:tracking-[0.18em] font-semibold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md mb-4 sm:mb-5 ${p.featured ? "bg-accent text-accent-foreground" : "bg-accent/15 text-accent"}`}>
+                {p.tag}
+              </span>
+              <p className={`mb-5 sm:mb-6 leading-relaxed text-sm sm:text-[0.95rem] ${p.featured ? "text-primary-foreground/85" : "text-foreground/75"}`}>
+                {p.description}
+              </p>
+              <ul className="space-y-2 sm:space-y-2.5 mb-5 sm:mb-6">
+                {p.bullets.map((b) => (
+                  <li key={b} className="flex gap-3 text-xs sm:text-sm items-start">
+                    <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 bg-accent" />
+                    <span className={p.featured ? "text-primary-foreground/90" : "text-foreground/80"}>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className={`text-[0.7rem] sm:text-xs italic mb-6 sm:mb-8 leading-relaxed ${p.featured ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
+                {p.footnote}
+              </p>
+              <a
+                href={p.ctaLink}
+                target="_blank"
+                rel="noreferrer"
+                className={`mt-auto text-sm sm:text-base ${p.featured ? "btn-primary" : "btn-outline"}`}
+              >
+                {p.cta}
+              </a>
+            </Reveal>
+          );
+        })}
+      </div>
+
+      <div className="flex md:hidden items-center justify-center gap-3 mt-6">
+        <button
+          onClick={() => scrollTo(Math.max(0, active - 1))}
+          aria-label="Programa anterior"
+          className="w-9 h-9 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition"
+        >
+          <ChevronLeft size={18} />
+        </button>
+        <div className="flex gap-2">
+          {programs.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              aria-label={`Ir para programa ${i + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === active ? "w-6 bg-accent" : "w-2 bg-accent/30 hover:bg-accent/60"
+              }`}
+            />
+          ))}
+        </div>
+        <button
+          onClick={() => scrollTo(Math.min(programs.length - 1, active + 1))}
+          aria-label="Próximo programa"
+          className="w-9 h-9 rounded-full border border-border/70 flex items-center justify-center text-primary hover:border-accent hover:text-accent hover:bg-accent/10 transition"
+        >
+          <ChevronRight size={18} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
