@@ -294,7 +294,7 @@ function Index() {
       {/* SOBRE / EXPERTISE */}
       <section id="sobre" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-16 sm:py-20">
         <Reveal className="max-w-3xl">
-          <span className="block w-16 h-[2px] bg-accent mb-6" />
+          <span className="block w-16 h-[2px] bg-accent mb-6 shadow-[0_0_12px_var(--color-accent)]" />
           <p className="eyebrow mb-4">Marlene Corrêa — Psicanalista Clínica e Mentora</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl mb-6 sm:mb-8">Expertise & Experiência</h2>
           <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
@@ -430,7 +430,7 @@ function Index() {
             />
           </div>
           <div className="order-1 lg:order-2">
-            <span className="block w-16 h-[2px] bg-accent mb-6" />
+            <span className="block w-16 h-[2px] bg-accent mb-6 shadow-[0_0_12px_var(--color-accent)]" />
             <p className="eyebrow mb-4">Saúde Mental Corporativa</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl mb-6">Programas Corporativos em Saúde Mental & NR-1</h2>
             <p className="text-foreground/75 leading-relaxed mb-4">
