@@ -242,48 +242,48 @@ function Index() {
 
       {/* HERO */}
       <section id="top" className="relative overflow-hidden hero-glow">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 lg:pt-20 pb-24 grid lg:grid-cols-2 gap-14 items-center relative z-10">
-          <Reveal variant="left">
-            <p className="eyebrow mb-6">Saúde Mental e Reconstrução Profissional</p>
-            <h1 className="text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.05] mb-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-10 sm:pt-14 lg:pt-20 pb-16 sm:pb-20 lg:pb-24 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center relative z-10">
+          <Reveal variant="left" className="order-2 lg:order-1">
+            <p className="eyebrow mb-4 sm:mb-6">Saúde Mental e Reconstrução Profissional</p>
+            <h1 className="text-[2.15rem] sm:text-5xl lg:text-[4.25rem] leading-[1.08] mb-6 sm:mb-8">
               Saúde Mental e Reconstrução Profissional para Mulheres 40+
             </h1>
-            <p className="eyebrow mb-6">
+            <p className="eyebrow mb-4 sm:mb-6">
               Marlene Corrêa — Psicanalista Clínica e Mentora Estratégica
             </p>
-            <p className="text-lg text-foreground/75 leading-relaxed max-w-xl mb-6">
+            <p className="text-base sm:text-lg text-foreground/75 leading-relaxed max-w-xl mb-6">
               Profissional em saúde mental como psicanalista clínica e mentora estratégica, criadora do
               Programa Exclusivo de Reconstrução 40+, conduzo mulheres que desejam romper padrões,
               ressignificar sua história e reconstruir carreira com propósito, maturidade emocional e direção.
             </p>
-            <div className="max-w-xl mb-10">
+            <div className="max-w-xl mb-8 sm:mb-10">
               <p className="text-foreground/85">Não é apenas sobre mudança profissional.</p>
               <p className="italic text-muted-foreground">
                 É sobre reconstruir identidade e assumir a potência que a maturidade trouxe.
               </p>
             </div>
-            <div className="flex flex-wrap gap-4">
-              <a href={waLink("Olá Marlene! Gostaria de solicitar aplicação para o Programa Exclusivo de Reconstrução 40+.")} className="btn-primary" target="_blank" rel="noreferrer">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <a href={waLink("Olá Marlene! Gostaria de solicitar aplicação para o Programa Exclusivo de Reconstrução 40+.")} className="btn-primary text-center" target="_blank" rel="noreferrer">
                 Solicitar Aplicação
               </a>
-              <a href="#programas" className="btn-outline">Conhecer Mais</a>
+              <a href="#programas" className="btn-outline text-center">Conhecer Mais</a>
             </div>
           </Reveal>
-          <Reveal variant="right" delay={150} className="relative flex justify-center lg:justify-end">
+          <Reveal variant="right" delay={150} className="relative flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="absolute -inset-2 rounded-[1.5rem] bg-accent/10 -rotate-2 float-slow" aria-hidden />
-            <div className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-accent/40 float-slow" aria-hidden style={{ animationDelay: "1.5s" }} />
             <img
               src={heroImage}
               alt="Marlene Corrêa, psicanalista clínica"
               width={1200}
               height={1400}
-              className="relative rounded-[1.25rem] shadow-[var(--shadow-soft)] object-cover w-full max-w-[440px] lg:max-w-[480px] h-auto"
+              className="relative rounded-[1.25rem] shadow-[var(--shadow-soft)] object-cover w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[480px] h-auto"
             />
           </Reveal>
         </div>
 
         {/* Marquee de valores */}
-        <div className="marquee border-y border-border/50 bg-card/50 py-5 text-primary/70 font-serif italic text-lg">
+        <div className="marquee border-y border-border/50 bg-card/50 py-4 sm:py-5 text-primary/70 font-serif italic text-base sm:text-lg">
           <div className="marquee-track">
             {[...marqueeItems, ...marqueeItems].map((t, i) => (
               <span key={i} className="flex items-center gap-3">
@@ -296,12 +296,12 @@ function Index() {
       </section>
 
       {/* SOBRE / EXPERTISE */}
-      <section id="sobre" className="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+      <section id="sobre" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-16 sm:py-20">
         <Reveal className="max-w-3xl">
           <span className="block w-16 h-[2px] bg-accent mb-6" />
           <p className="eyebrow mb-4">Marlene Corrêa — Psicanalista Clínica e Mentora</p>
-          <h2 className="text-4xl md:text-5xl mb-8">Expertise & Experiência</h2>
-          <div className="space-y-5 text-lg text-foreground/80 leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl mb-6 sm:mb-8">Expertise & Experiência</h2>
+          <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
             <p>
               Profissional em saúde mental como psicanalista clínica e mentora estratégica,
               criadora do <strong className="text-primary font-semibold">Programa Exclusivo de Reconstrução 40+</strong>.
@@ -318,22 +318,23 @@ function Index() {
           </div>
         </Reveal>
 
-        <div className="mt-16">
+        <div className="mt-12 sm:mt-16">
           <StatsBlock />
         </div>
       </section>
 
 
       {/* PROGRAMAS */}
-      <section id="programas" className="bg-[var(--color-surface)] py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+      <section id="programas" className="bg-[var(--color-surface)] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <SectionEyebrow>Programas de Transformação</SectionEyebrow>
-            <h2 className="text-4xl md:text-5xl mb-4">Programas de Transformação</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">Programas de Transformação</h2>
             <p className="text-foreground/70">Processos estruturados e seletivos para sua reconstrução profissional e pessoal</p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 items-start">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+
             {programs.map((p, idx) => {
               const Icon = p.icon;
               return (
