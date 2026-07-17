@@ -583,12 +583,12 @@ function Index() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section id="depoimentos" className="py-16 sm:py-20 lg:py-24">
+      <section id="depoimentos" className="bg-primary text-primary-foreground py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
             <SectionEyebrow>Depoimentos</SectionEyebrow>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-3">Histórias de Transformação</h2>
-            <p className="text-foreground/70">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl mb-3 text-primary-foreground">Histórias de Transformação</h2>
+            <p className="text-primary-foreground/75">Veja como mulheres como você reconstruíram suas vidas e carreiras</p>
           </div>
           <Reveal variant="up">
             <TestimonialCarousel />
